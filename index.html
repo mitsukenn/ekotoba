@@ -59,12 +59,31 @@
       <h1 class="hero-title reveal">やさしい言葉と花の絵が、<br />心にそっと寄り添う</h1>
       <p class="hero-sub reveal">沖縄から届ける、やさしい“えことば”の世界。</p>
 
-      <figure class="hero-art reveal">
-        <div class="frame">
-          <img src="images/ekotoba-04.jpg" alt="えことば作品「失敗も成功も 明日を生きる糧にする」白い花が三つ並ぶ" loading="eager" data-lightbox="images/ekotoba-04.jpg" data-caption="失敗も成功も　明日を生きる糧にする" />
+      <div class="hero-art reveal carousel" id="heroCarousel" aria-roledescription="カルーセル" aria-label="えことば作品">
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <figure class="c-slide">
+              <div class="frame"><img src="images/ekotoba-04.jpg" alt="えことば作品「失敗も成功も 明日を生きる糧にする」白い花が三つ並ぶ" loading="eager" data-lightbox="images/ekotoba-04.jpg" data-caption="失敗も成功も　明日を生きる糧にする" /></div>
+              <figcaption>失敗も成功も　明日を生きる糧にする</figcaption>
+            </figure>
+            <figure class="c-slide">
+              <div class="frame"><img src="images/ekotoba-01.jpg" alt="えことば作品「生きづらさの分だけ 言葉がある」" loading="lazy" data-lightbox="images/ekotoba-01.jpg" data-caption="生きづらさの分だけ　言葉がある" /></div>
+              <figcaption>生きづらさの分だけ　言葉がある</figcaption>
+            </figure>
+            <figure class="c-slide">
+              <div class="frame"><img src="images/ekotoba-02.jpg" alt="えことば作品「疲れたら 休もうね」" loading="lazy" data-lightbox="images/ekotoba-02.jpg" data-caption="疲れたら　休もうね" /></div>
+              <figcaption>疲れたら　休もうね</figcaption>
+            </figure>
+            <figure class="c-slide">
+              <div class="frame"><img src="images/ekotoba-03.jpg" alt="えことば作品「表現は自由 表現は生き方」" loading="lazy" data-lightbox="images/ekotoba-03.jpg" data-caption="表現は自由　表現は生き方" /></div>
+              <figcaption>表現は自由　表現は生き方</figcaption>
+            </figure>
+          </div>
         </div>
-        <figcaption>失敗も成功も　明日を生きる糧にする</figcaption>
-      </figure>
+        <button class="c-arrow c-prev" type="button" aria-label="前の作品">‹</button>
+        <button class="c-arrow c-next" type="button" aria-label="次の作品">›</button>
+        <div class="c-dots" role="tablist" aria-label="作品を選ぶ"></div>
+      </div>
 
       <div class="hero-actions reveal">
         <a href="#gallery" class="btn btn-pill">作品を見る<span class="chev">›</span></a>
@@ -245,6 +264,10 @@
             <div><dt class="news-tag">期間</dt><dd>6月1日〜6月20日</dd></div>
           </dl>
           <p class="news-note">やさしい言葉と花の絵が、心にそっと寄り添う展示販売会。</p>
+          <figure class="news-flyer">
+            <img src="images/flyer-past.jpg" alt="過去の展示「えことば展示販売会」のチラシ" loading="lazy" data-lightbox="images/flyer-past.jpg" data-caption="えことば展示販売会 チラシ（過去の展示）" />
+            <figcaption>▲ 過去の展示チラシ（こんな雰囲気の展示です）</figcaption>
+          </figure>
         </article>
       </div>
     </section>

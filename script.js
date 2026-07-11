@@ -60,6 +60,61 @@
     });
   });
 
+  /* ===== ヒーローのカルーセル（横スライド） ===== */
+  var car = document.getElementById("heroCarousel");
+  if (car) {
+    var track = car.querySelector(".carousel-track");
+    var slides = car.querySelectorAll(".c-slide");
+    var dotsWrap = car.querySelector(".c-dots");
+    var n = slides.length, idx = 0, timer = null, dots = [];
+    var reduceC = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    for (var ci = 0; ci < n; ci++) {
+      (function (i) {
+        var b = document.createElement("button");
+        b.className = "c-dot" + (i === 0 ? " active" : "");
+        b.type = "button";
+        b.setAttribute("role", "tab");
+        b.setAttribute("aria-label", (i + 1) + "枚目の作品");
+        b.addEventListener("click", function () { go(i); restart(); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      })(ci);
+    }
+    function go(i) {
+      idx = (i + n) % n;
+      track.style.transform = "translateX(" + (-idx * 100) + "%)";
+      dots.forEach(function (d, k) { d.classList.toggle("active", k === idx); });
+    }
+    function next() { go(idx + 1); }
+    function prev() { go(idx - 1); }
+    function start() { if (reduceC) return; stop(); timer = setInterval(next, 4500); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    car.querySelector(".c-next").addEventListener("click", function () { next(); restart(); });
+    car.querySelector(".c-prev").addEventListener("click", function () { prev(); restart(); });
+
+    // スワイプ操作
+    var startX = null, moved = false;
+    car.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; moved = false; stop(); }, { passive: true });
+    car.addEventListener("touchmove", function () { moved = true; }, { passive: true });
+    car.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (moved && Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+      startX = null;
+      start();
+    }, { passive: true });
+
+    // ホバー・非表示中は自動送りを止める
+    car.addEventListener("mouseenter", stop);
+    car.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+
+    start();
+  }
+
   /* ===== ヘッダー：スクロールで背景 ===== */
   var header = document.getElementById("siteHeader");
   function onScroll() {
