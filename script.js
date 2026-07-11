@@ -42,28 +42,19 @@
     });
   }
 
-  /* ===== 背景の花あしらい（上下左右の端）を注入 ===== */
-  var decorSrc = {
-    tl: "images/decor/flower-cluster.svg",
-    tr: "images/decor/flower-cluster.svg",
-    bl: "images/decor/flower-sprig.svg",
-    br: "images/decor/flower-sprig.svg",
-    lm: "images/decor/flower-sprig.svg",
-    rm: "images/decor/flower-sprig.svg"
-  };
+  /* ===== 背景の花あしらい（挿絵PNG）を各セクションの端に配置 ===== */
+  /* data-decor="tr:01,bl:09" のように「位置:画像番号」で指定 */
+  var validPos = { tl:1, tr:1, bl:1, br:1, lm:1, rm:1 };
   document.querySelectorAll("[data-decor]").forEach(function (sec) {
     var host = sec.querySelector(".inner") || sec;
-    sec.getAttribute("data-decor").split(",").forEach(function (pos) {
-      pos = pos.trim();
-      if (!decorSrc[pos]) return;
+    sec.getAttribute("data-decor").split(",").forEach(function (pair) {
+      var parts = pair.trim().split(":");
+      var pos = parts[0], num = parts[1];
+      if (!validPos[pos] || !num) return;
       var span = document.createElement("span");
       span.className = "decor decor-" + pos;
       span.setAttribute("aria-hidden", "true");
-      var img = document.createElement("img");
-      img.src = decorSrc[pos];
-      img.alt = "";
-      img.loading = "lazy";
-      span.appendChild(img);
+      span.style.backgroundImage = "url('images/decorations/deco-" + num + ".png')";
       host.insertBefore(span, host.firstChild);
     });
   });

@@ -90,21 +90,26 @@ button { font-family: inherit; cursor: pointer; }
 .flower:nth-of-type(3n) { --petal: #A9C6E0; }
 .flower:nth-of-type(3n+2) { --petal: #C9E4A6; }
 
-/* ===== 装飾：花のあしらい（背景として上下左右の端に） ===== */
+/* ===== 装飾：花のあしらい（挿絵PNGを背景として端に） ===== */
 .decor {
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  opacity: .82;
-  width: 108px;
+  opacity: .8;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
-.decor img { width: 100%; height: auto; }
-.decor-tl { top: -10px; left: -22px; transform: scaleX(-1); }
-.decor-tr { top: -10px; right: -22px; }
-.decor-bl { bottom: -4px; left: -22px; transform: scaleX(-1); width: 92px; }
-.decor-br { bottom: -4px; right: -22px; width: 96px; }
-.decor-lm { top: 42%; left: -30px; width: 78px; }
-.decor-rm { top: 42%; right: -30px; transform: scaleX(-1); width: 78px; }
+/* 角：ほぼ正方形の枠 */
+.decor-tl, .decor-tr, .decor-bl, .decor-br { width: 124px; height: 124px; }
+.decor-tr { top: -14px; right: -18px; }
+.decor-tl { top: -14px; left: -18px; transform: scaleX(-1); }
+.decor-br { bottom: -14px; right: -18px; transform: scaleY(-1); }
+.decor-bl { bottom: -14px; left: -18px; transform: scale(-1, -1); }
+/* 左右の端：縦長のスプリグ（上下反転はしない） */
+.decor-lm, .decor-rm { width: 80px; height: 196px; top: 38%; }
+.decor-lm { left: -22px; transform: scaleX(-1); }
+.decor-rm { right: -22px; }
 /* 装飾は常にコンテンツの背面へ */
 .hero, .section, .inner { position: relative; }
 .hero > *, .section > *, .inner > * { position: relative; z-index: 1; }
@@ -531,14 +536,13 @@ main { display: block; }
   .brand-name { font-size: 17px; }
 
   .section { padding: 88px 24px; }
-  .decor { width: 172px; }
-  .decor-tl, .decor-tr { top: -16px; }
-  .decor-tl { left: -48px; }
-  .decor-tr { right: -48px; }
-  .decor-bl { bottom: -8px; left: -52px; width: 148px; }
-  .decor-br { bottom: -8px; right: -52px; width: 150px; }
-  .decor-lm { left: -56px; width: 120px; }
-  .decor-rm { right: -56px; width: 120px; }
+  .decor-tl, .decor-tr, .decor-bl, .decor-br { width: 184px; height: 184px; }
+  .decor-tl, .decor-tr { top: -26px; }
+  .decor-bl, .decor-br { bottom: -26px; }
+  .decor-tl { left: -46px; } .decor-tr { right: -46px; }
+  .decor-bl { left: -46px; } .decor-br { right: -46px; }
+  .decor-lm, .decor-rm { width: 118px; height: 300px; }
+  .decor-lm { left: -44px; } .decor-rm { right: -44px; }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
 
@@ -562,6 +566,13 @@ main { display: block; }
 @media (min-width: 1024px) {
   .hero { max-width: var(--wide); }
   .hero-title { font-size: 50px; }
+}
+
+/* 狭いスマホでは横の花を隠し、装飾を控えめに（作品を主役に） */
+@media (max-width: 560px) {
+  .decor-lm, .decor-rm { display: none; }
+  .decor { opacity: .68; }
+  .decor-tl, .decor-tr, .decor-bl, .decor-br { width: 108px; height: 108px; }
 }
 
 /* ===== モーション配慮 ===== */
