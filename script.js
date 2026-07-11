@@ -53,18 +53,18 @@
 
   /* ===== モバイルナビ ===== */
   var toggle = document.getElementById("navToggle");
-  var nav = document.querySelector(".site-nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
+  var menu = document.getElementById("mobileMenu");
+  if (toggle && menu) {
+    var setMenu = function (open) {
+      menu.hidden = !open;
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+    };
+    toggle.addEventListener("click", function () {
+      setMenu(menu.hidden);
     });
-    nav.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        nav.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+    menu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
     });
   }
 

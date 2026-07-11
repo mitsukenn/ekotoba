@@ -1,4 +1,4 @@
-<!-- Arakaki Kensho ekotoba site v1.0 -->
+<!-- Arakaki Kensho ekotoba site v2.0 -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>あらかき けんしょう ｜ えことば ― やさしい言葉と花の絵</title>
   <meta name="description" content="沖縄を拠点に「えことば」を制作する、あらかき けんしょうの公式サイト。短い手書きの言葉と色とりどりの花の絵が、心にそっと寄り添います。個展・絵本の情報も。" />
-  <!-- OGP -->
   <meta property="og:title" content="あらかき けんしょう ｜ えことば" />
   <meta property="og:description" content="やさしい言葉と花の絵が、心にそっと寄り添う。" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/ekotoba-03.jpg" />
-  <!-- Fonts -->
+  <meta property="og:image" content="images/ekotoba-04.jpg" />
+  <meta name="theme-color" content="#F6EEDE" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
@@ -19,12 +18,12 @@
 </head>
 <body>
 
-  <!-- ===== ヘッダー（追従ナビ） ===== -->
+  <!-- ===== ヘッダー ===== -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <a href="#hero" class="brand">
-        <span class="brand-flower" aria-hidden="true"></span>
-        <span class="brand-name">あらかき けんしょう</span>
+        <span class="hanko" aria-hidden="true"></span>
+        <span class="brand-name">あらかき けんしょう<span class="sep">｜</span><span class="brand-sub">えことば</span></span>
       </a>
       <nav class="site-nav" aria-label="メインナビ">
         <a href="#gallery">えことば</a>
@@ -39,46 +38,56 @@
         <span></span><span></span><span></span>
       </button>
     </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="モバイルメニュー" hidden>
+      <a href="#gallery">えことば</a>
+      <a href="#paintings">絵</a>
+      <a href="#poems">詩</a>
+      <a href="#story">想い</a>
+      <a href="#books">絵本</a>
+      <a href="#news">お知らせ</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
   </header>
 
   <main>
 
-    <!-- ===== 3.1 ヒーロー ===== -->
+    <!-- ===== ヒーロー ===== -->
     <section class="hero" id="hero">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="hero-eyebrow reveal">えことば</p>
-          <h1 class="hero-title reveal">やさしい言葉と<br />花の絵が、<br />心にそっと寄り添う</h1>
-          <p class="hero-sub reveal">沖縄を拠点に、短い手書きの言葉と色とりどりの花の絵を組み合わせた「えことば」を制作しています。伝えたいのは、いつも一つ。命の大切さと、今日を生きていることへの感謝です。</p>
-          <div class="hero-actions reveal">
-            <a href="#gallery" class="btn btn-primary">作品を見る</a>
-            <a href="#books" class="btn btn-ghost">絵本を見る</a>
-          </div>
-        </div>
-        <figure class="hero-art reveal">
-          <div class="frame frame-hero">
-            <img src="images/ekotoba-03.jpg" alt="えことば作品「表現は自由 表現は生き方」赤い枠に黄色の地、色とりどりの小花" loading="eager" />
-          </div>
-          <figcaption>表現は自由　表現は生き方</figcaption>
-        </figure>
+      <span class="decor decor-tr" aria-hidden="true"><img src="images/decor/flower-cluster.svg" alt="" /></span>
+      <span class="decor decor-bl" aria-hidden="true"><img src="images/decor/flower-sprig.svg" alt="" /></span>
+
+      <div class="eyebrow reveal">
+        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>えことば</p>
+        <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
       </div>
-      <a href="#gallery" class="scroll-hint" aria-label="下へスクロール">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <span>scroll</span>
-      </a>
+
+      <h1 class="hero-title reveal">やさしい言葉と花の絵が、<br />心にそっと寄り添う</h1>
+      <p class="hero-sub reveal">沖縄から届ける、やさしい“えことば”の世界。</p>
+
+      <figure class="hero-art reveal">
+        <div class="frame">
+          <img src="images/ekotoba-04.jpg" alt="えことば作品「失敗も成功も 明日を生きる糧にする」白い花が三つ並ぶ" loading="eager" data-lightbox="images/ekotoba-04.jpg" data-caption="失敗も成功も　明日を生きる糧にする" />
+        </div>
+        <figcaption>失敗も成功も　明日を生きる糧にする</figcaption>
+      </figure>
+
+      <div class="hero-actions reveal">
+        <a href="#gallery" class="btn btn-pill">作品を見る<span class="chev">›</span></a>
+        <a href="#books" class="btn btn-ghost">絵本を見る</a>
+      </div>
     </section>
 
-    <!-- ===== 3.2 えことばギャラリー ===== -->
+    <!-- ===== えことば ===== -->
     <section class="section" id="gallery">
-      <div class="section-head">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <h2 class="section-title">えことば</h2>
-        <p class="section-lead">短い言葉と花の絵。読んだあと、ちょこっと元気になれますように。</p>
+      <span class="decor decor-br" aria-hidden="true"><img src="images/decor/flower-sprig.svg" alt="" /></span>
+      <div class="eyebrow reveal">
+        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>えことば</p>
+        <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
       </div>
+      <h2 class="section-title reveal">やさしい言葉と、花の絵</h2>
+      <p class="section-lead reveal">読んだあと、ちょこっと元気になれますように。</p>
 
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- works は script.js から動的生成 -->
-      </div>
+      <div class="gallery-grid" id="galleryGrid"><!-- works は script.js から生成 --></div>
 
       <p class="gallery-more reveal">
         Instagram では <strong>1,600点以上</strong>のえことばを毎日公開しています。<br />
@@ -86,205 +95,190 @@
       </p>
     </section>
 
-    <!-- ===== 絵（大きな作品） ===== -->
+    <!-- ===== 絵 ===== -->
     <section class="section section-alt" id="paintings">
-      <div class="section-head">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <h2 class="section-title">絵</h2>
-        <p class="section-lead">キャンバスいっぱいに咲かせた、大きな花の世界。</p>
-      </div>
+      <div class="inner">
+        <span class="decor decor-tr" aria-hidden="true"><img src="images/decor/flower-cluster.svg" alt="" /></span>
+        <div class="eyebrow reveal">
+          <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>絵</p>
+          <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
+        </div>
+        <h2 class="section-title reveal">キャンバスに咲く、花の世界</h2>
 
-      <div class="painting-list">
-        <figure class="painting reveal">
-          <div class="frame">
-            <img src="images/painting-01.jpg" alt="青空の下、無数の花が咲き誇る絵画作品" loading="lazy" data-lightbox="images/painting-01.jpg" data-caption="花畑（青空）" />
-          </div>
-          <figcaption>
-            <h3>咲きみだれる</h3>
-            <p>青い空の下、大小さまざまな花が画面いっぱいに広がる一枚。ひとつひとつ違う色や形が、そのままでいいと語りかけてきます。</p>
-          </figcaption>
-        </figure>
+        <div class="painting-list">
+          <figure class="painting reveal">
+            <div class="frame frame--dark">
+              <img src="images/painting-01.jpg" alt="青空の下、無数の花が咲き誇る絵画作品" loading="lazy" data-lightbox="images/painting-01.jpg" data-caption="咲きみだれる" />
+            </div>
+            <figcaption>
+              <h3>咲きみだれる</h3>
+              <p>青い空の下、大小さまざまな花が画面いっぱいに広がる一枚。ひとつひとつ違う色や形が、そのままでいいと語りかけてきます。</p>
+            </figcaption>
+          </figure>
 
-        <figure class="painting reveal painting-reverse">
-          <div class="frame">
-            <img src="images/painting-02.jpg" alt="夜空に浮かぶ大きな月と、一面に咲く白い花を描いた絵画作品" loading="lazy" data-lightbox="images/painting-02.jpg" data-caption="月夜の花畑" />
-          </div>
-          <figcaption>
-            <h3>月夜に咲く</h3>
-            <p>まっ暗な夜空に大きな月。その下で、白い花たちが静かに光ります。暗い時間にも、命はちゃんと咲いている ― そんな願いを込めて。</p>
-          </figcaption>
-        </figure>
+          <figure class="painting painting-reverse reveal">
+            <div class="frame frame--dark">
+              <img src="images/painting-02.jpg" alt="夜空に浮かぶ大きな月と、一面に咲く白い花を描いた絵画作品" loading="lazy" data-lightbox="images/painting-02.jpg" data-caption="月夜に咲く" />
+            </div>
+            <figcaption>
+              <h3>月夜に咲く</h3>
+              <p>まっ暗な夜空に、大きな月。その下で白い花たちが静かに光ります。暗い時間にも、命はちゃんと咲いている ― そんな願いを込めて。</p>
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <!-- ===== 詩 ===== -->
     <section class="section" id="poems">
-      <div class="section-head">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <h2 class="section-title">詩</h2>
-        <p class="section-lead">えことばに添えられた、少し長いことば。</p>
+      <span class="decor decor-bl" aria-hidden="true"><img src="images/decor/flower-sprig.svg" alt="" /></span>
+      <div class="eyebrow reveal">
+        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>詩</p>
+        <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
       </div>
+      <h2 class="section-title reveal">えことばに添える、ことば</h2>
 
       <div class="poem-list">
         <article class="poem reveal">
-          <div class="frame frame-poem">
+          <div class="frame">
             <img src="images/poem-01.jpg" alt="詩「呼吸」の手書き作品。黄色い花が下に並ぶ" loading="lazy" data-lightbox="images/poem-01.jpg" data-caption="詩「呼吸」" />
           </div>
           <div class="poem-text">
             <h3>呼吸</h3>
-            <p class="poem-body">好きなことは好きと言い<br />
-              嫌いなことは　嫌いと言う<br />
-              素直に言えたら<br />
-              きっと生きやすくなる<br />
-              そんな簡単じゃないことは<br />
-              わかってはいるけれど<br />
-              そうありたいと願ってる<br />
-              心の声に素直に生きれたら<br />
-              呼吸がしやすくなるだろう</p>
+            <p class="poem-body">好きなことは好きと言い<br />嫌いなことは　嫌いと言う<br />素直に言えたら<br />きっと生きやすくなる<br />そんな簡単じゃないことは<br />わかってはいるけれど<br />そうありたいと願ってる<br />心の声に素直に生きれたら<br />呼吸がしやすくなるだろう</p>
           </div>
         </article>
 
-        <article class="poem reveal poem-reverse">
-          <div class="frame frame-poem">
+        <article class="poem poem-reverse reveal">
+          <div class="frame">
             <img src="images/poem-02.jpg" alt="詩「シンプルに」の手書き作品。緑の花が下に並ぶ" loading="lazy" data-lightbox="images/poem-02.jpg" data-caption="詩「シンプルに」" />
           </div>
           <div class="poem-text">
             <h3>シンプルに</h3>
-            <p class="poem-body">ぼくは<br />
-              ぼくのままでいいし<br />
-              あなたは<br />
-              あなたのままでいい<br />
-              ぼくは<br />
-              ぼくを好きでいて<br />
-              あなたは<br />
-              あなたを好きでいる<br />
-              シンプルが一番</p>
+            <p class="poem-body">ぼくは<br />ぼくのままでいいし<br />あなたは<br />あなたのままでいい<br />ぼくは<br />ぼくを好きでいて<br />あなたは<br />あなたを好きでいる<br />シンプルが一番</p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- ===== 3.3 想い ===== -->
-    <section class="section section-story" id="story">
-      <div class="story-inner">
-        <span class="flower-mark flower-mark-lg" aria-hidden="true"></span>
-        <h2 class="section-title">命の大切さを、やさしく伝えたい</h2>
+    <!-- ===== 想い ===== -->
+    <section class="section section-alt section-story" id="story">
+      <div class="inner">
+        <span class="decor decor-tr" aria-hidden="true"><img src="images/decor/flower-cluster.svg" alt="" /></span>
+        <div class="eyebrow reveal">
+          <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>想い</p>
+          <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
+        </div>
+        <h2 class="section-title reveal">命の大切さを、やさしく伝えたい</h2>
+
         <!-- STORY: 後日差し替え -->
-        <div class="story-body">
+        <div class="story-body reveal">
           <p>あらかき けんしょうが描く「えことば」は、短い手書きの言葉と、色とりどりの花の絵を組み合わせた作品です。伝えたいのは、いつも一つ。命の大切さと、今日を生きていることへの感謝。</p>
           <p>むずかしい言葉ではなく、読んだ人が「ちょこっと元気になる」こと。それが、一枚一枚に込めた願いです。</p>
         </div>
-        <p class="story-sign" aria-hidden="true">― けんしょう</p>
+
+        <figure class="story-portrait reveal">
+          <div class="frame">
+            <img src="images/portrait.jpg" alt="作者 あらかき けんしょうの写真" loading="lazy" data-lightbox="images/portrait.jpg" data-caption="あらかき けんしょう" />
+          </div>
+          <figcaption>あらかき けんしょう（沖縄）</figcaption>
+        </figure>
+
+        <div class="quotebox reveal">
+          <span class="flower flower-red" aria-hidden="true"></span>
+          <p>あなたの毎日に、<br />やさしい花が咲きますように。</p>
+          <span class="hanko" aria-hidden="true"></span>
+        </div>
+        <p class="story-sign reveal" aria-hidden="true">― けんしょう</p>
       </div>
     </section>
 
-    <!-- ===== 3.4 絵本 ===== -->
-    <section class="section section-alt" id="books">
-      <div class="section-head">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <h2 class="section-title">絵本</h2>
-        <p class="section-lead">読むたびに、心にあたたかいものが広がりますように。</p>
+    <!-- ===== 絵本 ===== -->
+    <section class="section" id="books">
+      <span class="decor decor-br" aria-hidden="true"><img src="images/decor/flower-cluster.svg" alt="" /></span>
+      <div class="eyebrow reveal">
+        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>絵本</p>
+        <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
       </div>
+      <h2 class="section-title reveal">やさしい言葉が、<br />あたたかな時間を届ける</h2>
 
-      <div class="book-list">
-        <!-- 絵本1 -->
-        <article class="book reveal">
-          <div class="frame frame-book">
+      <div class="book reveal">
+        <div class="book-covers">
+          <div class="book-cover book-cover-1">
             <img src="images/book-arigato.jpg" alt="絵本『おおきなわから贈る あなたへありがとう』の表紙" loading="lazy" data-lightbox="images/book-arigato.jpg" data-caption="おおきなわから贈る あなたへありがとう" />
           </div>
-          <div class="book-info">
-            <h3 class="book-title">おおきなわから贈る<br />あなたへありがとう</h3>
-            <p class="book-meta">さく・え：あらかき けんしょう ／ 森木出版</p>
-            <p class="book-desc">大切な人への「ありがとう」。命のつながりや、家族のぬくもりをあらためて感じられる絵本です。おじいちゃん・おばあちゃん、お孫さんと一緒に読む時間にもおすすめです。</p>
-            <ul class="book-points">
-              <li><span class="flower-mark" aria-hidden="true"></span>お孫さんと心あたたまる時間を過ごしたい方</li>
-              <li><span class="flower-mark" aria-hidden="true"></span>命の尊さや感謝の気持ちを感じたい方</li>
-              <li><span class="flower-mark" aria-hidden="true"></span>家族のつながりを大切にしたい方</li>
-            </ul>
-            <!-- BOOK_PURCHASE_URL: 未定 -->
-            <button class="btn btn-primary" disabled aria-disabled="true">購入は準備中です</button>
-          </div>
-        </article>
-
-        <!-- 本1 -->
-        <article class="book reveal book-reverse">
-          <div class="frame frame-book">
+          <div class="book-cover book-cover-2">
             <img src="images/book-akachan.jpg" alt="絵本『あかちゃんってすごいんだね』の表紙" loading="lazy" data-lightbox="images/book-akachan.jpg" data-caption="あかちゃんってすごいんだね" />
           </div>
-          <div class="book-info">
-            <h3 class="book-title">あかちゃんって<br />すごいんだね</h3>
-            <p class="book-meta">著者：あらかき けんしょう</p>
-            <p class="book-desc">すべてのあかちゃん、すべてのお母さんに捧ぐ ― 生まれてきてくれたこと、そして育てていること。当たり前の中にある「すごさ」を、やさしい絵とことばで見つめなおす一冊です。</p>
-            <ul class="book-points">
-              <li><span class="flower-mark" aria-hidden="true"></span>これから赤ちゃんを迎えるご家族に</li>
-              <li><span class="flower-mark" aria-hidden="true"></span>子育てをがんばるお母さん・お父さんに</li>
-              <li><span class="flower-mark" aria-hidden="true"></span>出産・誕生日の贈りものに</li>
-            </ul>
-            <!-- BOOK_PURCHASE_URL: 未定 -->
-            <button class="btn btn-primary" disabled aria-disabled="true">購入は準備中です</button>
-          </div>
+        </div>
+
+        <ul class="book-titles">
+          <li><span class="flower flower-red" aria-hidden="true"></span>おおきなわから贈る　あなたへありがとう</li>
+          <li><span class="flower flower-red" aria-hidden="true"></span>あかちゃんってすごいんだね</li>
+        </ul>
+        <p class="book-desc">大切な人への「ありがとう」や、命のつながり・家族のぬくもりを感じられる絵本たち。おじいちゃん・おばあちゃんとお孫さんが、一緒に読む時間にもおすすめです。</p>
+        <!-- BOOK_PURCHASE_URL: 未定 -->
+        <button class="btn btn-pill" disabled aria-disabled="true">購入は準備中です</button>
+      </div>
+    </section>
+
+    <!-- ===== お知らせ ===== -->
+    <section class="section section-alt" id="news">
+      <div class="inner">
+        <span class="decor decor-tr" aria-hidden="true"><img src="images/decor/flower-cluster.svg" alt="" /></span>
+        <div class="eyebrow reveal">
+          <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>お知らせ</p>
+          <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
+        </div>
+        <h2 class="section-title reveal">展示・個展のご案内</h2>
+
+        <!-- 開催予定 -->
+        <article class="news-card news-center reveal" style="margin-top:26px;">
+          <span class="news-badge">開催予定</span>
+          <h3 class="news-title">えことばetc展</h3>
+          <div class="news-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
+          <dl class="news-detail">
+            <div><dt class="news-tag">日時</dt><dd>9月12日（土）・9月19日（土）</dd></div>
+            <div><dt class="news-tag">時間</dt><dd>11:30〜14:30（L.O. 13:45）</dd></div>
+            <div><dt class="news-tag">会場</dt><dd>cafeめしギャラリー さまさま</dd></div>
+            <div><dt class="news-tag">住所</dt><dd>那覇市首里石嶺町4-373-1<br />沖縄県総合福祉センター 西棟2階</dd></div>
+          </dl>
+          <p class="news-note">えことば・絵・詩・絵本をあつめた展示です。お茶やお食事とご一緒に、ゆっくりどうぞ。<br />お問い合わせ：<a href="tel:098-886-5115">098-886-5115</a>（定休日：日曜）</p>
+        </article>
+
+        <!-- 過去の展示 -->
+        <article class="news-card news-center reveal">
+          <span class="news-badge news-badge-past">過去の展示</span>
+          <h3 class="news-title">あらかき けんしょう「えことば」展</h3>
+          <div class="news-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
+          <dl class="news-detail">
+            <div><dt class="news-tag">会場</dt><dd>那覇市おもろまち</dd></div>
+            <div><dt class="news-tag">期間</dt><dd>6月1日〜6月20日</dd></div>
+          </dl>
+          <p class="news-note">やさしい言葉と花の絵が、心にそっと寄り添う展示販売会。</p>
         </article>
       </div>
     </section>
 
-    <!-- ===== 3.5 お知らせ / 個展 ===== -->
-    <section class="section" id="news">
-      <div class="section-head">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <h2 class="section-title">お知らせ・個展情報</h2>
-        <p class="section-lead">やさしい言葉と花の絵に、会いに来てください。</p>
-      </div>
-
-      <div class="news-list">
-        <article class="news-card news-card-feature reveal">
-          <div class="news-badge">開催予定</div>
-          <div class="news-body">
-            <h3 class="news-title">えことばetc展</h3>
-            <dl class="news-detail">
-              <div><dt>日時</dt><dd>9月12日（土）・9月19日（土）<br />11:30〜14:30（ラストオーダー 13:45）</dd></div>
-              <div><dt>会場</dt><dd>cafeめしギャラリー さまさま</dd></div>
-              <div><dt>住所</dt><dd>那覇市首里石嶺町4丁目373-1<br />沖縄県総合福祉センター 西棟2階</dd></div>
-              <div><dt>お問い合わせ</dt><dd><a href="tel:098-886-5115" class="inline-link">098-886-5115</a>（※定休日：日曜日）</dd></div>
-            </dl>
-            <p class="news-note">えことば、絵、詩、絵本 ― これまでの作品をあつめた展示です。お茶やお食事とご一緒に、ゆっくりご覧いただけます。</p>
-          </div>
-        </article>
-
-        <article class="news-card reveal">
-          <div class="news-badge news-badge-past">過去の展示</div>
-          <div class="news-body">
-            <h3 class="news-title">あらかき けんしょう「えことば」展 ― 展示販売会</h3>
-            <dl class="news-detail">
-              <div><dt>会場</dt><dd>那覇市おもろまち</dd></div>
-              <div><dt>期間</dt><dd>6月1日〜6月20日</dd></div>
-            </dl>
-            <p class="news-note">やさしい言葉と花の絵が、心にそっと寄り添う展示販売会。</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== 3.6 SNS ===== -->
-    <section class="section section-alt section-sns" id="sns">
-      <div class="sns-inner reveal">
-        <span class="flower-mark flower-mark-lg" aria-hidden="true"></span>
-        <h2 class="section-title">毎日のえことばを、Instagramで</h2>
-        <p class="sns-lead">1,600点以上の作品を公開中。今日の一枚が、あなたに届きますように。</p>
-        <a href="https://www.instagram.com/kotobaichi/" target="_blank" rel="noopener" class="btn btn-primary">Instagram @kotobaichi</a>
-        <!-- FACEBOOK_URL: 未定 -->
-      </div>
-    </section>
-
-    <!-- ===== 3.7 お問い合わせ ===== -->
+    <!-- ===== お問い合わせ ===== -->
     <section class="section" id="contact">
-      <div class="section-head">
-        <span class="flower-mark" aria-hidden="true"></span>
-        <h2 class="section-title">お問い合わせ</h2>
-        <p class="section-lead">個展のご依頼、作品・絵本について、お気軽にどうぞ。</p>
+      <span class="decor decor-bl" aria-hidden="true"><img src="images/decor/flower-sprig.svg" alt="" /></span>
+      <div class="eyebrow reveal">
+        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>お問い合わせ</p>
+        <div class="eyebrow-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
       </div>
+      <h2 class="section-title reveal">Instagram の DM から、お気軽に</h2>
+      <p class="section-lead reveal">作品のこと、個展のこと、お気軽にご連絡ください。</p>
+
+      <div class="contact-wreath reveal">
+        <span class="contact-envelope" aria-hidden="true"></span>
+        <span class="contact-handle">@kotobaichi</span>
+        <span class="contact-mini">毎日のえことばを<br />Instagram で公開中</span>
+      </div>
+
+      <!-- CONTACT_EMAIL: 未定 -->
       <div class="contact-actions reveal">
-        <!-- CONTACT_EMAIL: 未定 -->
-        <a href="https://www.instagram.com/kotobaichi/" target="_blank" rel="noopener" class="btn btn-primary">Instagram DM で問い合わせる</a>
+        <a href="https://www.instagram.com/kotobaichi/" target="_blank" rel="noopener" class="btn btn-pill btn-ig">DMで問い合わせる<span class="chev">›</span></a>
         <a href="tel:098-886-5115" class="btn btn-ghost">お電話（098-886-5115）</a>
       </div>
       <p class="contact-note">※ お電話は展示会場（cafeめしギャラリー さまさま）につながります。定休日は日曜日です。</p>
@@ -292,14 +286,14 @@
 
   </main>
 
-  <!-- ===== 3.8 フッター ===== -->
+  <!-- ===== フッター ===== -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="brand-flower" aria-hidden="true"></span>
+        <span class="hanko" aria-hidden="true"></span>
         <p class="footer-name">あらかき けんしょう</p>
-        <p class="footer-place">沖縄</p>
       </div>
+      <p class="footer-place">沖縄</p>
       <nav class="footer-nav" aria-label="フッターナビ">
         <a href="#gallery">えことば</a>
         <a href="#paintings">絵</a>
@@ -312,8 +306,8 @@
       <div class="footer-sns">
         <a href="https://www.instagram.com/kotobaichi/" target="_blank" rel="noopener">Instagram @kotobaichi</a>
       </div>
+      <p class="copyright">© <span id="year"></span> あらかき けんしょう</p>
     </div>
-    <p class="copyright">© <span id="year"></span> あらかき けんしょう</p>
   </footer>
 
   <!-- ===== ライトボックス ===== -->
