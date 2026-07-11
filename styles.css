@@ -110,9 +110,9 @@ button { font-family: inherit; cursor: pointer; }
 .decor-lm, .decor-rm { width: 80px; height: 196px; top: 38%; }
 .decor-lm { left: -22px; transform: scaleX(-1); }
 .decor-rm { right: -22px; }
-/* 装飾は常にコンテンツの背面へ */
+/* 装飾は常にコンテンツの背面へ（.decor は absolute のまま維持） */
 .hero, .section, .inner { position: relative; }
-.hero > *, .section > *, .inner > * { position: relative; z-index: 1; }
+.hero > *:not(.decor), .section > *:not(.decor), .inner > *:not(.decor) { position: relative; z-index: 1; }
 .hero > .decor, .section > .decor, .inner > .decor { z-index: 0; }
 
 /* ===== ヘッダー ===== */
@@ -307,9 +307,10 @@ main { display: block; }
   overflow: hidden;
 }
 .hero-title {
-  font-size: clamp(31px, 9.5vw, 46px);
+  font-size: clamp(25px, 7.2vw, 46px);
   line-height: 1.6;
   margin: 4px 0 0;
+  overflow-wrap: anywhere;
 }
 .hero-sub {
   font-family: var(--font-quote);
@@ -440,6 +441,7 @@ main { display: block; }
   letter-spacing: .3em; flex: 0 0 auto;
 }
 .news-detail dd { margin: 0; font-size: 15px; font-weight: 500; }
+.news-closed { display: inline-block; margin-top: 4px; font-size: 12.5px; color: var(--accent); font-weight: 500; }
 .news-note { margin: 16px 0 0; font-size: 14px; color: var(--ink-soft); text-align: center; }
 .news-note a { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
 
@@ -571,8 +573,8 @@ main { display: block; }
 /* 狭いスマホでは横の花を隠し、装飾を控えめに（作品を主役に） */
 @media (max-width: 560px) {
   .decor-lm, .decor-rm { display: none; }
-  .decor { opacity: .68; }
-  .decor-tl, .decor-tr, .decor-bl, .decor-br { width: 108px; height: 108px; }
+  .decor { opacity: .82; }
+  .decor-tl, .decor-tr, .decor-bl, .decor-br { width: 124px; height: 124px; }
 }
 
 /* ===== モーション配慮 ===== */
