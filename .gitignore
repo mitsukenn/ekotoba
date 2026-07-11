@@ -1,0 +1,7 @@
+# OS / エディタ由来のファイル
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+.vscode/
+.idea/

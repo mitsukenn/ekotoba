@@ -1,0 +1,578 @@
+/* Arakaki Kensho ekotoba site v1.0 */
+
+/* ===== カラー・トークン ===== */
+:root {
+  --paper: #FBF9F4;
+  --paper-alt: #F5F1E8;
+  --ink: #2B2724;
+  --ink-soft: #6E6862;
+  --accent: #E8636B;
+  --accent-warm: #F0A93F;
+  --line: #E7E1D6;
+
+  --shadow-card: 0 8px 24px rgba(43, 39, 36, 0.06);
+  --shadow-frame: 0 10px 30px rgba(43, 39, 36, 0.10);
+
+  --max: 1080px;
+  --read: 680px;
+
+  --font-display: "Zen Maru Gothic", sans-serif;
+  --font-body: "Noto Sans JP", sans-serif;
+  --font-quote: "Zen Kurenaido", serif;
+}
+
+/* ===== リセット ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  background-color: var(--paper);
+  /* 紙の質感：極薄のノイズ＋やわらかいグラデーション */
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(240, 169, 63, 0.05), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(232, 99, 107, 0.04), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.4; margin: 0; }
+button { font-family: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ===== 小花シグネチャ（SVGマスク） ===== */
+.flower-mark,
+.brand-flower {
+  --petal: #F6C6CB;
+  --center: var(--accent-warm);
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  background: var(--petal);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg%3E%3Cellipse cx='50' cy='22' rx='15' ry='20'/%3E%3Cellipse cx='50' cy='78' rx='15' ry='20'/%3E%3Cellipse cx='22' cy='50' rx='20' ry='15'/%3E%3Cellipse cx='78' cy='50' rx='20' ry='15'/%3E%3Cellipse cx='30' cy='30' rx='14' ry='17' transform='rotate(-45 30 30)'/%3E%3Cellipse cx='70' cy='30' rx='14' ry='17' transform='rotate(45 70 30)'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg%3E%3Cellipse cx='50' cy='22' rx='15' ry='20'/%3E%3Cellipse cx='50' cy='78' rx='15' ry='20'/%3E%3Cellipse cx='22' cy='50' rx='20' ry='15'/%3E%3Cellipse cx='78' cy='50' rx='20' ry='15'/%3E%3Cellipse cx='30' cy='30' rx='14' ry='17' transform='rotate(-45 30 30)'/%3E%3Cellipse cx='70' cy='30' rx='14' ry='17' transform='rotate(45 70 30)'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+  position: relative;
+}
+.flower-mark::after,
+.brand-flower::after {
+  content: "";
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: var(--center);
+}
+/* 花色のローテーション（単調にしない） */
+.flower-mark:nth-of-type(3n) { --petal: #A9D6E5; }
+.flower-mark:nth-of-type(3n+1) { --petal: #F6C6CB; }
+.flower-mark:nth-of-type(3n+2) { --petal: #C9E4A6; }
+.flower-mark-lg { width: 30px; height: 30px; }
+
+/* ===== ヘッダー ===== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.site-header.scrolled {
+  background-color: rgba(251, 249, 244, 0.88);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.site-nav { display: flex; gap: 22px; }
+.site-nav a {
+  font-size: 14px;
+  color: var(--ink-soft);
+  position: relative;
+  padding: 4px 0;
+  transition: color .2s;
+}
+.site-nav a:hover { color: var(--ink); }
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width .25s ease;
+}
+.site-nav a:hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+.nav-toggle span {
+  width: 24px; height: 2px;
+  background: var(--ink);
+  transition: transform .3s, opacity .3s;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== ボタン ===== */
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  border: 1.5px solid transparent;
+  transition: transform .2s, box-shadow .2s, background-color .2s, color .2s;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(232, 99, 107, 0.28);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(232, 99, 107, 0.34); }
+.btn-primary:disabled {
+  background: var(--line);
+  color: var(--ink-soft);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.5);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ===== 額装フレーム ===== */
+.frame {
+  background: #fff;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.frame img { border-radius: 2px; }
+
+/* ===== セクション共通 ===== */
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 92px 24px;
+}
+.section-alt {
+  max-width: none;
+  background: var(--paper-alt);
+  padding-left: 0; padding-right: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.section-alt > * { max-width: var(--max); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+.section-head { text-align: center; margin-bottom: 56px; }
+.section-head .flower-mark { margin-bottom: 12px; }
+.section-title { font-size: clamp(26px, 4vw, 32px); }
+.section-lead { color: var(--ink-soft); font-size: 15px; margin-top: 12px; }
+
+/* ===== ヒーロー ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 24px 80px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-eyebrow {
+  font-family: var(--font-quote);
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: .18em;
+  margin: 0 0 8px;
+}
+.hero-title {
+  font-size: clamp(34px, 6vw, 52px);
+  line-height: 1.55;
+  letter-spacing: .02em;
+}
+.hero-sub {
+  color: var(--ink-soft);
+  font-size: 16px;
+  max-width: 30em;
+  margin: 24px 0 32px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-art { margin: 0; }
+.frame-hero { transform: rotate(-1.2deg); }
+.hero-art figcaption {
+  font-family: var(--font-quote);
+  text-align: center;
+  color: var(--ink-soft);
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 26px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.scroll-hint .flower-mark { animation: bob 2.4s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+/* ===== ギャラリー ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 34px;
+}
+.work-card { margin: 0; }
+.work-card .frame { cursor: zoom-in; transition: transform .25s ease, box-shadow .25s ease; }
+.work-card .frame:hover { transform: translateY(-4px); box-shadow: var(--shadow-frame); }
+.work-caption {
+  font-family: var(--font-quote);
+  font-size: 17px;
+  color: var(--ink);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.7;
+}
+.gallery-more {
+  text-align: center;
+  margin-top: 56px;
+  color: var(--ink-soft);
+  line-height: 2;
+}
+.inline-link {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(232, 99, 107, 0.4);
+  transition: border-color .2s;
+}
+.inline-link:hover { border-color: var(--accent); }
+
+/* ===== 絵（大きな作品） ===== */
+.painting-list { display: flex; flex-direction: column; gap: 72px; }
+.painting {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+.painting-reverse { direction: rtl; }
+.painting-reverse > * { direction: ltr; }
+.painting .frame { cursor: zoom-in; }
+.painting figcaption h3 { font-size: 24px; margin-bottom: 14px; }
+.painting figcaption p { color: var(--ink-soft); font-size: 15px; }
+
+/* ===== 詩 ===== */
+.poem-list { display: flex; flex-direction: column; gap: 72px; }
+.poem {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+}
+.poem-reverse { direction: rtl; }
+.poem-reverse > * { direction: ltr; }
+.frame-poem { cursor: zoom-in; max-width: 380px; }
+.poem-reverse .frame-poem { margin-left: auto; }
+.poem-text h3 {
+  font-family: var(--font-quote);
+  font-size: 26px;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.poem-body {
+  font-family: var(--font-quote);
+  font-size: 19px;
+  line-height: 2.1;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ===== 想い ===== */
+.section-story {
+  max-width: none;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(240, 169, 63, 0.06), transparent 55%),
+    var(--paper);
+  text-align: center;
+}
+.story-inner {
+  max-width: var(--read);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.story-inner .section-title { font-size: clamp(24px, 4vw, 30px); margin-bottom: 8px; }
+.flower-mark-lg { margin-bottom: 20px; }
+.story-body { margin-top: 28px; }
+.story-body p { font-size: 17px; margin: 0 0 20px; }
+.story-sign {
+  font-family: var(--font-quote);
+  color: var(--accent);
+  font-size: 18px;
+  margin-top: 28px;
+}
+
+/* ===== 絵本 ===== */
+.book-list { display: flex; flex-direction: column; gap: 72px; }
+.book {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+}
+.book-reverse { direction: rtl; }
+.book-reverse > * { direction: ltr; }
+.frame-book { max-width: 340px; cursor: zoom-in; }
+.book-reverse .frame-book { margin-left: auto; }
+.book-title { font-size: 26px; line-height: 1.5; }
+.book-meta { color: var(--ink-soft); font-size: 13px; margin: 10px 0 18px; }
+.book-desc { font-size: 15px; margin: 0 0 20px; }
+.book-points { list-style: none; padding: 0; margin: 0 0 26px; }
+.book-points li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  padding: 6px 0;
+}
+
+/* ===== お知らせ ===== */
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.news-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow-card);
+  padding: 28px 30px;
+}
+.news-card-feature {
+  grid-column: 1 / -1;
+  border-color: rgba(232, 99, 107, 0.35);
+}
+.news-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.news-badge-past { background: var(--ink-soft); }
+.news-title { font-size: 21px; margin-bottom: 18px; }
+.news-detail { margin: 0; }
+.news-detail > div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+}
+.news-detail dt { color: var(--ink-soft); font-size: 13px; font-family: var(--font-display); }
+.news-detail dd { margin: 0; font-size: 14.5px; }
+.news-note {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--line);
+  padding-top: 16px;
+}
+
+/* ===== SNS ===== */
+.section-sns { text-align: center; }
+.sns-inner { max-width: var(--read); margin: 0 auto; }
+.sns-lead { color: var(--ink-soft); margin: 8px 0 28px; }
+
+/* ===== お問い合わせ ===== */
+.contact-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contact-note {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin-top: 22px;
+}
+
+/* ===== フッター ===== */
+.site-footer {
+  background: var(--ink);
+  color: #E9E4DC;
+  padding: 56px 24px 28px;
+  margin-top: 20px;
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.footer-brand .brand-flower { --petal: #F6C6CB; margin-bottom: 10px; }
+.footer-name { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin: 0; }
+.footer-place { color: #9C958B; font-size: 13px; margin: 4px 0 0; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-nav a { font-size: 14px; color: #C9C2B8; }
+.footer-nav a:hover { color: #fff; }
+.footer-sns a { font-size: 14px; color: #C9C2B8; }
+.footer-sns a:hover { color: var(--accent-warm); }
+.copyright {
+  max-width: var(--max);
+  margin: 40px auto 0;
+  text-align: center;
+  color: #8A847B;
+  font-size: 12px;
+}
+
+/* ===== ライトボックス ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(30, 27, 24, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+.lightbox.open { display: flex; }
+.lightbox-figure { margin: 0; max-width: 90vw; max-height: 88vh; text-align: center; }
+.lightbox-figure img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 4px;
+  background: #fff;
+  padding: 10px;
+}
+.lightbox-figure figcaption {
+  color: #EDE8E0;
+  font-family: var(--font-quote);
+  margin-top: 14px;
+  font-size: 16px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 26px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  transition: background-color .2s;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
+
+/* ===== スクロールフェード ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 860px) {
+  .site-nav {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    width: min(78vw, 300px);
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(251, 249, 244, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: -4px 0 24px rgba(43, 39, 36, 0.12);
+    padding: 88px 32px 32px;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+  }
+  .site-nav.open { transform: translateX(0); }
+  .site-nav a { font-size: 17px; padding: 10px 0; }
+  .nav-toggle { display: flex; z-index: 60; }
+
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .hero-actions { justify-content: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .frame-hero { max-width: 440px; margin: 0 auto; }
+
+  .painting, .poem, .book { grid-template-columns: 1fr; gap: 26px; }
+  .painting-reverse, .poem-reverse, .book-reverse { direction: ltr; }
+  .frame-poem, .frame-book { margin: 0 auto !important; }
+  .painting figcaption, .poem-text, .book-info { text-align: center; }
+  .book-points { display: inline-block; text-align: left; }
+
+  .news-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 64px 20px; }
+  .gallery-grid { grid-template-columns: 1fr; gap: 34px; }
+  .hero { padding-top: 104px; min-height: auto; }
+  .header-inner { padding: 12px 18px; }
+  .news-detail > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* ===== モーション配慮 ===== */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
