@@ -536,8 +536,20 @@ main { display: block; }
 }
 .contact-handle { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--accent); }
 .contact-mini { font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
-.contact-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 26px; }
+.contact-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 20px; }
 .contact-note { text-align: center; color: var(--ink-soft); font-size: 13px; margin-top: 18px; }
+
+/* お問い合わせフォーム（Googleフォーム埋め込み） */
+.contact-form { max-width: 480px; margin: 22px auto 0; }
+.contact-form iframe {
+  width: 100%; height: 1150px; border: none; border-radius: 14px;
+  background: var(--paper-soft); box-shadow: var(--shadow-card);
+}
+.contact-or {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  max-width: 360px; margin: 30px auto 8px; color: var(--ink-soft); font-size: 14px;
+}
+.contact-or::before, .contact-or::after { content: ""; flex: 1; height: 0; border-top: 1px dashed var(--line); }
 
 /* ===== SNS ===== */
 .section-sns { text-align: center; }
