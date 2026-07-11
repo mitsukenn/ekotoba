@@ -42,6 +42,32 @@
     });
   }
 
+  /* ===== 背景の花あしらい（上下左右の端）を注入 ===== */
+  var decorSrc = {
+    tl: "images/decor/flower-cluster.svg",
+    tr: "images/decor/flower-cluster.svg",
+    bl: "images/decor/flower-sprig.svg",
+    br: "images/decor/flower-sprig.svg",
+    lm: "images/decor/flower-sprig.svg",
+    rm: "images/decor/flower-sprig.svg"
+  };
+  document.querySelectorAll("[data-decor]").forEach(function (sec) {
+    var host = sec.querySelector(".inner") || sec;
+    sec.getAttribute("data-decor").split(",").forEach(function (pos) {
+      pos = pos.trim();
+      if (!decorSrc[pos]) return;
+      var span = document.createElement("span");
+      span.className = "decor decor-" + pos;
+      span.setAttribute("aria-hidden", "true");
+      var img = document.createElement("img");
+      img.src = decorSrc[pos];
+      img.alt = "";
+      img.loading = "lazy";
+      span.appendChild(img);
+      host.insertBefore(span, host.firstChild);
+    });
+  });
+
   /* ===== ヘッダー：スクロールで背景 ===== */
   var header = document.getElementById("siteHeader");
   function onScroll() {

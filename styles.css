@@ -90,18 +90,21 @@ button { font-family: inherit; cursor: pointer; }
 .flower:nth-of-type(3n) { --petal: #A9C6E0; }
 .flower:nth-of-type(3n+2) { --petal: #C9E4A6; }
 
-/* ===== 装飾：花のあしらい（差し替え用スロット） ===== */
+/* ===== 装飾：花のあしらい（背景として上下左右の端に） ===== */
 .decor {
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  opacity: .9;
-  width: 120px;
+  opacity: .82;
+  width: 108px;
 }
 .decor img { width: 100%; height: auto; }
-.decor-tr { top: -6px; right: -18px; }
-.decor-bl { bottom: 10px; left: -26px; transform: scaleX(-1); width: 88px; }
-.decor-br { bottom: 8px; right: -22px; width: 96px; }
+.decor-tl { top: -10px; left: -22px; transform: scaleX(-1); }
+.decor-tr { top: -10px; right: -22px; }
+.decor-bl { bottom: -4px; left: -22px; transform: scaleX(-1); width: 92px; }
+.decor-br { bottom: -4px; right: -22px; width: 96px; }
+.decor-lm { top: 42%; left: -30px; width: 78px; }
+.decor-rm { top: 42%; right: -30px; transform: scaleX(-1); width: 78px; }
 /* 装飾は常にコンテンツの背面へ */
 .hero, .section, .inner { position: relative; }
 .hero > *, .section > *, .inner > * { position: relative; z-index: 1; }
@@ -130,9 +133,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 .brand { display: flex; align-items: center; gap: 9px; }
 .brand .hanko { font-size: 15px; }
-.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; white-space: nowrap; }
-.brand-name .sep { color: var(--line); margin: 0 2px; font-weight: 500; }
-.brand-name .brand-sub { color: var(--ink-soft); }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; white-space: nowrap; display: inline-flex; align-items: baseline; }
+.brand-name .brand-main { font-size: 17px; letter-spacing: .02em; }
+.brand-name .sep { color: var(--line); margin: 0 5px; font-weight: 500; }
+.brand-name .brand-sub { color: var(--ink-soft); font-size: 12.5px; font-weight: 500; }
 
 .site-nav { display: none; }
 
@@ -268,20 +272,15 @@ main { display: block; }
 .section-alt { background: linear-gradient(180deg, rgba(241,230,210,.55), rgba(241,230,210,.25)); max-width: none; }
 .section-alt > .inner { max-width: var(--wrap); margin: 0 auto; }
 
-/* セクション見出しリボン */
-.eyebrow { text-align: center; margin-bottom: 30px; }
+/* セクション見出し（控えめな小ラベル＋タイトル） */
+.eyebrow { text-align: center; margin-bottom: 14px; }
 .eyebrow-label {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--font-display); font-weight: 700;
-  font-size: 20px; color: var(--accent); margin: 0;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 14px; color: var(--accent); margin: 0;
+  letter-spacing: .12em;
 }
-.eyebrow-rule {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  margin-top: 8px;
-}
-.eyebrow-rule::before, .eyebrow-rule::after {
-  content: ""; width: 64px; border-top: 2px dotted var(--accent-soft);
-}
+.eyebrow-label .flower { width: 14px; height: 14px; }
 .section-title {
   text-align: center;
   font-size: clamp(27px, 8vw, 34px);
@@ -396,7 +395,15 @@ main { display: block; }
 .book-cover-1 { width: 60%; max-width: 220px; transform: rotate(-2deg); }
 .book-cover-2 { width: 46%; max-width: 168px; transform: rotate(3deg); margin-bottom: 8px; }
 .book-titles { list-style: none; padding: 0; margin: 0 auto 20px; display: inline-block; text-align: left; }
-.book-titles li { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 500; font-size: 16px; padding: 6px 0; }
+.book-titles li { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-display); font-weight: 500; font-size: 16px; padding: 7px 0; line-height: 1.6; }
+.book-titles .flower { align-self: flex-start; margin-top: 4px; }
+.book-tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  color: var(--accent); background: var(--paper-tint);
+  border-radius: 5px; padding: 1px 8px; margin-left: 8px;
+  vertical-align: middle; letter-spacing: .08em;
+}
+.book-pub { display: block; font-size: 12px; color: var(--ink-soft); font-weight: 400; margin-top: 2px; }
 .book-desc { color: var(--ink-soft); font-size: 14.5px; max-width: 26em; margin: 0 auto 22px; }
 .book-single { display: flex; flex-direction: column; align-items: center; }
 
@@ -524,10 +531,14 @@ main { display: block; }
   .brand-name { font-size: 17px; }
 
   .section { padding: 88px 24px; }
-  .decor { width: 180px; }
-  .decor-tr { top: -10px; right: -30px; }
-  .decor-bl { bottom: 20px; left: -40px; width: 130px; }
-  .decor-br { bottom: 16px; right: -34px; width: 140px; }
+  .decor { width: 172px; }
+  .decor-tl, .decor-tr { top: -16px; }
+  .decor-tl { left: -48px; }
+  .decor-tr { right: -48px; }
+  .decor-bl { bottom: -8px; left: -52px; width: 148px; }
+  .decor-br { bottom: -8px; right: -52px; width: 150px; }
+  .decor-lm { left: -56px; width: 120px; }
+  .decor-rm { right: -56px; width: 120px; }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
 
