@@ -49,9 +49,12 @@
   ];
 
   /* ===== ギャラリー動的生成 ===== */
+  /* #galleryGrid に data-limit があればその枚数だけ表示（トップ用）。無ければ全点（作品ページ用） */
   var grid = document.getElementById("galleryGrid");
   if (grid) {
-    works.forEach(function (w, i) {
+    var limit = parseInt(grid.getAttribute("data-limit"), 10);
+    var list = (limit && limit > 0) ? works.slice(0, limit) : works;
+    list.forEach(function (w, i) {
       var fig = document.createElement("figure");
       fig.className = "work-card reveal";
 
