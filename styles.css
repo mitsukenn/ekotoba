@@ -287,8 +287,17 @@ main { display: block; }
 .section-alt { background: linear-gradient(180deg, rgba(241,230,210,.55), rgba(241,230,210,.25)); max-width: none; }
 .section-alt > .inner { max-width: var(--wrap); margin: 0 auto; }
 
-/* セクション見出し（控えめな小ラベル＋タイトル） */
-.eyebrow { text-align: center; margin-bottom: 14px; }
+/* セクション見出し（バナー画像＋タイトル） */
+.eyebrow { text-align: center; margin-bottom: 14px; position: relative; }
+.section-banner { display: block; margin: 0 auto; width: min(74%, 270px); height: auto; }
+/* バナーの左右に小さな花束を添える */
+.eyebrow::before, .eyebrow::after {
+  content: ""; position: absolute; top: 46%; width: 40px; height: 40px;
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+  opacity: .9; pointer-events: none;
+}
+.eyebrow::before { left: 2%; background-image: url("images/decorations/deco-07.png"); transform: translateY(-50%); }
+.eyebrow::after { right: 2%; background-image: url("images/decorations/deco-05.png"); transform: translateY(-50%) scaleX(-1); }
 .eyebrow-label {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: var(--font-display); font-weight: 500;
@@ -340,9 +349,9 @@ main { display: block; }
 /* ===== ヒーローのカルーセル ===== */
 .carousel { position: relative; }
 .carousel-viewport { overflow: hidden; border-radius: 6px; }
-.carousel-track { display: flex; will-change: transform; transition: transform 1.25s cubic-bezier(.4, 0, .15, 1); }
+.carousel-track { display: flex; will-change: transform; transition: transform 1.7s cubic-bezier(.4, 0, .15, 1); }
 .carousel.no-anim .carousel-track { transition: none; }
-.c-slide { flex: 0 0 100%; min-width: 0; margin: 0; opacity: .35; transition: opacity 1.1s ease; }
+.c-slide { flex: 0 0 100%; min-width: 0; margin: 0; opacity: .35; transition: opacity 1.6s ease; }
 .c-slide.is-active { opacity: 1; }
 .c-slide .frame { cursor: zoom-in; }
 .c-arrow {
@@ -566,8 +575,8 @@ main { display: block; }
 /* ===== スクロールで浮き出る演出 ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(34px) scale(.985);
-  transition: opacity 1.5s ease, transform 1.6s cubic-bezier(.16, .8, .28, 1);
+  transform: translateY(30px) scale(.99);
+  transition: opacity 1.9s ease, transform 2s cubic-bezier(.16, .82, .28, 1);
 }
 .reveal.is-visible { opacity: 1; transform: none; }
 /* 作品カードはやや大きめに浮き上がる */

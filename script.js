@@ -90,7 +90,7 @@
     slides[0].classList.add("is-active");
     function next() { go(idx + 1); }
     function prev() { go(idx - 1); }
-    function start() { if (reduceC) return; stop(); timer = setInterval(next, 8000); }
+    function start() { if (reduceC) return; stop(); timer = setInterval(next, 10000); }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function restart() { stop(); start(); }
 
