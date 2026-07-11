@@ -44,7 +44,8 @@
 
   /* ===== 背景の花あしらい（挿絵PNG）を各セクションの端に配置 ===== */
   /* data-decor="tr:01,bl:09" のように「位置:画像番号」で指定 */
-  var validPos = { tl:1, tr:1, bl:1, br:1, lm:1, rm:1 };
+  var validPos = { tl:1, tr:1, bl:1, br:1, lm:1, rm:1,
+    l1:1, l2:1, l3:1, r1:1, r2:1, r3:1 };
   document.querySelectorAll("[data-decor]").forEach(function (sec) {
     var host = sec.querySelector(".inner") || sec;
     sec.getAttribute("data-decor").split(",").forEach(function (pair) {
