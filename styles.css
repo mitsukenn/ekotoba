@@ -298,10 +298,12 @@ main { display: block; }
 .eyebrow-label .flower { width: 14px; height: 14px; }
 .section-title {
   text-align: center;
-  font-size: clamp(27px, 8vw, 34px);
-  letter-spacing: .04em;
+  font-size: clamp(24px, 7.1vw, 34px);
+  letter-spacing: .03em;
   margin-top: 6px;
 }
+/* 改行位置を整える：句（フレーズ）単位で折り返す */
+.nb { white-space: nowrap; }
 .section-lead {
   text-align: center; color: var(--ink-soft);
   font-size: 15px; margin: 14px auto 0; max-width: 30em;
@@ -338,9 +340,10 @@ main { display: block; }
 /* ===== ヒーローのカルーセル ===== */
 .carousel { position: relative; }
 .carousel-viewport { overflow: hidden; border-radius: 6px; }
-.carousel-track { display: flex; will-change: transform; transition: transform .95s cubic-bezier(.33,.1,.2,1); }
+.carousel-track { display: flex; will-change: transform; transition: transform 1.25s cubic-bezier(.4, 0, .15, 1); }
 .carousel.no-anim .carousel-track { transition: none; }
-.c-slide { flex: 0 0 100%; min-width: 0; margin: 0; }
+.c-slide { flex: 0 0 100%; min-width: 0; margin: 0; opacity: .35; transition: opacity 1.1s ease; }
+.c-slide.is-active { opacity: 1; }
 .c-slide .frame { cursor: zoom-in; }
 .c-arrow {
   position: absolute; top: 38%; transform: translateY(-50%);
@@ -563,8 +566,8 @@ main { display: block; }
 /* ===== スクロールで浮き出る演出 ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(38px) scale(.98);
-  transition: opacity 1.15s ease, transform 1.25s cubic-bezier(.2, .75, .2, 1);
+  transform: translateY(34px) scale(.985);
+  transition: opacity 1.5s ease, transform 1.6s cubic-bezier(.16, .8, .28, 1);
 }
 .reveal.is-visible { opacity: 1; transform: none; }
 /* 作品カードはやや大きめに浮き上がる */

@@ -85,10 +85,12 @@
       idx = (i + n) % n;
       track.style.transform = "translateX(" + (-idx * 100) + "%)";
       dots.forEach(function (d, k) { d.classList.toggle("active", k === idx); });
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === idx); });
     }
+    slides[0].classList.add("is-active");
     function next() { go(idx + 1); }
     function prev() { go(idx - 1); }
-    function start() { if (reduceC) return; stop(); timer = setInterval(next, 7000); }
+    function start() { if (reduceC) return; stop(); timer = setInterval(next, 8000); }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function restart() { stop(); start(); }
 
