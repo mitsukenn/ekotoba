@@ -13,7 +13,7 @@
     { file: "images/ekotoba-06.jpg", caption: "感謝が愛を生み　尊敬が愛を深める" },
     { file: "images/ekotoba-07.jpg", caption: "感謝の心は　愛の中で育つ" },
     { file: "images/ekotoba-08.jpg", caption: "人の可能性は　心の奥に隠れてる" },
-    { file: "images/ekotoba-09.jpg", caption: "挑戦する数は　人生を切り開く" },
+    { file: "images/ekotoba-09.jpg", caption: "挑戦する勇気は　人生を切り開く" },
     { file: "images/ekotoba-10.jpg", caption: "日々の挑戦が重なって　人生は豊かになる" },
     { file: "images/ekotoba-11.jpg", caption: "できない理由をあげるより　やりたい理由を一つ作ろう" },
     { file: "images/ekotoba-12.jpg", caption: "ぼくは思う　生きてるだけですごいって" },
