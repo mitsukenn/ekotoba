@@ -1,0 +1,378 @@
+<!-- Arakaki Kensho ekotoba site - story page (命の物語) DRAFT -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) - GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PB6TK25SY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8PB6TK25SY');
+  </script>
+
+  <title>命の物語 ｜ えことば ― あらかき けんしょう</title>
+  <meta name="description" content="なぜ、命の大切さを伝えたいのか。沖縄戦の話、幼くして亡くなった兄、看護師時代の出会い、うつの日々。あらかき けんしょうが「えことば」を描く理由の物語です。" />
+  <meta property="og:title" content="命の物語 ｜ えことば" />
+  <meta property="og:description" content="なぜ、命の大切さを伝えたいのか。えことばが生まれるまでの物語。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="images/story/story-05.jpg" />
+  <meta name="theme-color" content="#F6EEDE" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- このページ専用のスタイル -->
+  <style>
+    /* 章立ての物語ページ */
+    .story-page { padding-top: 92px; }
+    .story-page .section { padding-top: 56px; padding-bottom: 56px; }
+
+    /* 序文 */
+    .story-intro-lead {
+      font-family: var(--font-quote);
+      text-align: center;
+      font-size: 18px;
+      line-height: 2.3;
+      margin: 26px auto 0;
+      max-width: 24em;
+    }
+
+    /* 章ラベル（第一章 など） */
+    .ch-label {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 0 0 10px;
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 13.5px; color: var(--accent); letter-spacing: .3em;
+    }
+    .ch-label::before, .ch-label::after {
+      content: ""; width: 44px; border-top: 2px dotted var(--accent-soft);
+    }
+
+    /* 本文（詩のように中央揃え） */
+    .story-prose {
+      max-width: 27em;
+      margin: 26px auto 0;
+      text-align: center;
+    }
+    .story-prose p { margin: 0 0 1.5em; font-size: 15.5px; line-height: 2.1; }
+    .story-prose p:last-child { margin-bottom: 0; }
+
+    /* 心に残る一言（大きく・手書き風） */
+    .story-key {
+      font-family: var(--font-quote);
+      text-align: center;
+      font-size: 21px;
+      color: var(--accent);
+      line-height: 1.9;
+      margin: 30px auto;
+      max-width: 22em;
+    }
+    .story-key small { display: block; font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+
+    /* 章の締めの作品 */
+    .story-art { margin: 38px auto 0; max-width: 380px; }
+    .story-art .frame { cursor: zoom-in; }
+    .story-art figcaption {
+      font-family: var(--font-quote);
+      font-size: 17px; line-height: 1.8;
+      text-align: center; margin-top: 15px;
+    }
+
+    /* 章をつなぐ、小さな黄色い花 */
+    .story-bridge {
+      display: flex; justify-content: center; gap: 10px;
+      padding: 26px 0 4px;
+    }
+    .story-bridge .flower { --petal: #F0CE4B; --center: #E8A33D; width: 17px; height: 17px; }
+    .story-bridge .flower:nth-of-type(2) { transform: translateY(-6px) scale(.8); }
+    .story-bridge .flower:nth-of-type(3) { transform: translateY(2px) scale(.65); }
+
+    /* 相談窓口のご案内（そっと添える） */
+    .care-note {
+      max-width: 30em;
+      margin: 40px auto 0;
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-card);
+      text-align: left;
+    }
+    .care-note-title {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-display); font-weight: 700; font-size: 14.5px;
+      margin: 0 0 8px;
+    }
+    .care-note p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.9; margin: 0 0 10px; }
+    .care-note ul { list-style: none; margin: 0; padding: 0; }
+    .care-note li { font-size: 13.5px; padding: 5px 0; line-height: 1.8; }
+    .care-note li strong { font-weight: 500; display: block; }
+    .care-note li .tel { font-family: var(--font-display); color: var(--accent); font-weight: 700; letter-spacing: .04em; }
+
+    /* 結び */
+    .story-close { text-align: center; }
+    .story-close .quotebox { justify-content: center; }
+    .story-close .quotebox p { text-align: center; }
+    .story-close-words {
+      font-family: var(--font-quote);
+      font-size: 19px; line-height: 2.4;
+      margin: 30px auto 0; max-width: 22em;
+    }
+    .story-cta { margin-top: 44px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+    @media (min-width: 768px) {
+      .story-art { max-width: 420px; }
+      .story-key { font-size: 23px; }
+    }
+    /* 小さめのスマホでも、行の形が崩れないように */
+    @media (max-width: 360px) {
+      .story-prose p { font-size: 14px; }
+      .story-key { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ヘッダー ===== -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="hanko" aria-hidden="true"></span>
+        <span class="brand-name"><span class="brand-main">えことば</span><span class="sep">｜</span><span class="brand-sub">あらかき けんしょう</span></span>
+      </a>
+      <nav class="site-nav" aria-label="メインナビ">
+        <a href="index.html#concept">コンセプト</a>
+        <a href="index.html#gallery">えことば</a>
+        <a href="index.html#paintings">絵</a>
+        <a href="index.html#poems">詩</a>
+        <a href="index.html#story">想い</a>
+        <a href="index.html#books">本</a>
+        <a href="index.html#news">お知らせ</a>
+        <a href="index.html#contact">お問い合わせ</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="モバイルメニュー" hidden>
+      <a href="index.html#concept">コンセプト</a>
+      <a href="index.html#gallery">えことば</a>
+      <a href="index.html#paintings">絵</a>
+      <a href="index.html#poems">詩</a>
+      <a href="index.html#story">想い</a>
+      <a href="index.html#books">本</a>
+      <a href="index.html#news">お知らせ</a>
+      <a href="index.html#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <main class="story-page">
+
+    <!-- ===== 序 ===== -->
+    <section class="section" id="intro" data-decor="tl:07,tr:11,bl:06,br:09,l2:40,r2:31">
+      <div class="works-top">
+        <a href="index.html" class="works-back">← ホームに戻る</a>
+      </div>
+      <div class="eyebrow reveal">
+        <img class="section-banner" src="images/banners/banner-omoi.png" alt="想い" loading="eager" />
+      </div>
+      <h1 class="section-title reveal"><span class="nb">命の物語</span></h1>
+      <p class="section-lead reveal">なぜ、命の大切さを伝えたいのか。</p>
+
+      <div class="story-intro-lead reveal">
+        <p>「えことば」で伝えたいことは、<br />いつも一つ。<br />命の大切さです。<br /><br />ふり返ると、<br />理由は四つあります。</p>
+      </div>
+    </section>
+
+    <!-- ===== 第一章 沖縄戦の話 ===== -->
+    <section class="section section-alt" id="ch1" data-decor="tl:02,tr:16,bl:05,br:15,l1:33,r1:27">
+      <div class="inner">
+        <p class="ch-label reveal">第一章</p>
+        <h2 class="section-title reveal"><span class="nb">沖縄戦の話</span></h2>
+
+        <div class="story-prose reveal">
+          <p>幼い頃、家族団欒の時間に、<br />両親からよく沖縄戦の話を聞きました。<br />学校でも、慰霊の日が近づくと、<br />戦争を体験した方の話を聞きました。</p>
+          <p>逃げ惑う道に、<br />たくさんのご遺体があったこと。<br />家の近くに、<br />遺骨を集める場所があったこと。<br />母方の祖父は戦争で亡くなり、<br />母には、父親の記憶がありません。</p>
+          <p>命を奪い合う戦争は、怖い。<br />二度と、傷つけ合ってはいけない。<br />幼心に、そう刻まれました。</p>
+        </div>
+
+        <p class="story-key reveal">命どぅ宝<small>― 命こそ、宝 ―</small></p>
+
+        <div class="story-prose reveal">
+          <p>どんな命にも意味があり、<br />命は尊いもの。<br />生きていること自体に、意味がある。<br />この想いが、すべての始まりです。</p>
+        </div>
+
+        <figure class="story-art reveal">
+          <div class="frame">
+            <img src="images/story/story-01.jpg" alt="えことば作品「あなたの命も みんなの命も 貴いんだ」色とりどりの花が寄り集まる" loading="lazy" data-lightbox="images/story/story-01.jpg" data-caption="あなたの命も　みんなの命も　貴いんだ" />
+          </div>
+          <figcaption>あなたの命も　みんなの命も<br />貴いんだ</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="story-bridge" aria-hidden="true"><span class="flower"></span><span class="flower"></span><span class="flower"></span></div>
+
+    <!-- ===== 第二章 会ったことのない兄 ===== -->
+    <section class="section" id="ch2" data-decor="tl:15,tr:05,bl:03,br:16,l2:44,r2:29">
+      <p class="ch-label reveal">第二章</p>
+      <h2 class="section-title reveal"><span class="nb">会ったことのない兄</span></h2>
+
+      <div class="story-prose reveal">
+        <p>私が生まれる前に、<br />病気で幼くして亡くなった兄がいます。<br />会ったことは、ありません。<br />残っているのは、<br />一枚の遺影だけです。</p>
+        <p>それでも、両親が涙を流しながら<br />何度も話してくれたから、<br />兄はずっと、<br />そばにいる気がします。<br />兄弟みんな、兄を「一番上」だと<br />思って育ちました。<br />兄弟の仲が良いのは、<br />兄のおかげです。</p>
+        <p>どの命も、大事。<br />命は長さではなく、<br />どう生き抜いたかが問われる。<br />傷つけていい命なんて、ない。<br />兄が、そう教えてくれました。</p>
+      </div>
+
+      <figure class="story-art reveal">
+        <div class="frame">
+          <img src="images/story/story-02.jpg" alt="えことば作品「生きてる分だけ 奇跡だよ」淡い色の花が集まる" loading="lazy" data-lightbox="images/story/story-02.jpg" data-caption="生きてる分だけ　奇跡だよ" />
+        </div>
+        <figcaption>生きてる分だけ　奇跡だよ</figcaption>
+      </figure>
+    </section>
+
+    <div class="story-bridge" aria-hidden="true"><span class="flower"></span><span class="flower"></span><span class="flower"></span></div>
+
+    <!-- ===== 第三章 看護師として ===== -->
+    <section class="section section-alt" id="ch3" data-decor="tl:06,tr:01,bl:07,br:02,l1:22,r1:32">
+      <div class="inner">
+        <p class="ch-label reveal">第三章</p>
+        <h2 class="section-title reveal"><span class="nb">看護師として</span></h2>
+
+        <div class="story-prose reveal">
+          <p>公立病院の外科病棟で、<br />看護師として、<br />がん患者さんの看護をしていました。<br />手術を終えて退院された方が、<br />しばらくして再入院し、<br />亡くなっていく。<br />その繰り返しが、つらかった。</p>
+          <p>無力感を抱えていた頃、<br />ある方の言葉に救われました。</p>
+        </div>
+
+        <p class="story-key reveal">「あらかきさん、<br />人は技術じゃない。心だよ」</p>
+
+        <div class="story-prose reveal">
+          <p>末期がんになっても諦めず、<br />最期まで命を燃やす生き方に、<br />私はたくさん励まされました。<br />命は儚いからこそ、美しく貴い。<br />ありのまま、今を生きよう。<br />患者さんたちが、<br />そう気づかせてくれました。</p>
+        </div>
+
+        <figure class="story-art reveal">
+          <div class="frame">
+            <img src="images/story/story-03.jpg" alt="えことば作品「疲れたら 休もうね」黄色い花と緑の葉" loading="lazy" data-lightbox="images/story/story-03.jpg" data-caption="疲れたら　休もうね" />
+          </div>
+          <figcaption>疲れたら　休もうね</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="story-bridge" aria-hidden="true"><span class="flower"></span><span class="flower"></span><span class="flower"></span></div>
+
+    <!-- ===== 第四章 うつの底で ===== -->
+    <section class="section" id="ch4" data-decor="tl:16,tr:15,bl:09,br:01,l2:29,r2:45">
+      <p class="ch-label reveal">第四章</p>
+      <h2 class="section-title reveal"><span class="nb">うつの底で</span></h2>
+
+      <div class="story-prose reveal">
+        <p>37歳のとき、うつを発症しました。<br />職場で重い役割を担い、<br />悩んでいた頃、<br />父の死も重なりました。</p>
+        <p>絶望的な孤独感に覆われました。<br />光も当たらず、何も聞こえず、<br />何の味もしない世界。<br />頭が回らず、身体も重く、<br />過去ばかり振り返っては<br />自分を責めて、<br />日々、死ぬことばかり<br />考えていました。</p>
+        <p>それでも生きているのは、<br />妻や子どもたち、母や兄弟、<br />親友の支えがあったからです。<br />誰ひとり、<br />私を責める人がいなかった。<br />もしあの時、<br />一人でも責める人がいたら、<br />今、私は生きていません。</p>
+        <p>ある日、自転車に乗っていて、<br />道ばたの黄色い花に救われました。<br />ふと浮かんだ詩を、<br />書いては消し、<br />書いては消しするうちに、<br />自分を責める気持ちが<br />少しずつ薄まって、<br />「ありのままの自分でいいんだ」<br />という生きる力が湧いてきました。</p>
+        <p>絵は、自分の知らなかった世界に<br />導いてくれ、<br />生きる力を与えてくれます。<br />あの日の黄色い花が、<br />今も私の絵の中に咲いています。</p>
+      </div>
+
+      <figure class="story-art reveal">
+        <div class="frame">
+          <img src="images/story/story-04.jpg" alt="えことば作品「花には いろいろな咲き方がある 悩まなくていい」黄色い花が五輪" loading="lazy" data-lightbox="images/story/story-04.jpg" data-caption="花には　いろいろな咲き方がある　悩まなくていい" />
+        </div>
+        <figcaption>花には　いろいろな咲き方がある<br />悩まなくていい</figcaption>
+      </figure>
+
+      <!-- 相談窓口（そっと添える） -->
+      <aside class="care-note reveal">
+        <p class="care-note-title"><span class="flower flower-sm" aria-hidden="true"></span>いま、つらい気持ちのあなたへ</p>
+        <p>死にたいほどつらいときは、<br />どうか、ひとりで抱えないでください。<br />話を聴いてくれる窓口があります。</p>
+        <ul>
+          <li><strong>よりそいホットライン</strong><span class="tel">0120-279-338</span>（24時間・無料）</li>
+          <li><strong>いのちの電話</strong><span class="tel">0570-783-556</span>（10時〜22時）</li>
+          <li><a href="https://www.mhlw.go.jp/mamorouyokokoro/" target="_blank" rel="noopener" class="inline-link">厚生労働省「まもろうよ こころ」→</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <div class="story-bridge" aria-hidden="true"><span class="flower"></span><span class="flower"></span><span class="flower"></span></div>
+
+    <!-- ===== 結び ===== -->
+    <section class="section section-alt story-close" id="close" data-decor="tl:07,tr:05,bl:03,br:06,l2:27,r2:37">
+      <div class="inner">
+        <p class="ch-label reveal">結び</p>
+        <h2 class="section-title reveal"><span class="nb">振り返って</span></h2>
+
+        <div class="story-prose reveal">
+          <p>10年以上、<br />希死念慮に苦しみました。<br />そんな私を救ったのは、<br />親友の言葉でした。</p>
+        </div>
+
+        <p class="story-key reveal">「いつ死んでもいいように<br />生きろ」</p>
+
+        <div class="story-close-words reveal">
+          <p>多くの出会いがあり、<br />悩みがあり、<br />言葉が生まれる。</p>
+        </div>
+
+        <figure class="story-art reveal">
+          <div class="frame">
+            <img src="images/story/story-05.jpg" alt="えことば作品「生きづらさの分だけ 言葉がある」木の額に色とりどりの花" loading="lazy" data-lightbox="images/story/story-05.jpg" data-caption="生きづらさの分だけ　言葉がある" />
+          </div>
+          <figcaption>生きづらさの分だけ　言葉がある</figcaption>
+        </figure>
+
+        <div class="quotebox reveal">
+          <span class="flower flower-red" aria-hidden="true"></span>
+          <p>必要な方に、<br />届きますように。</p>
+          <span class="hanko" aria-hidden="true"></span>
+        </div>
+        <p class="story-sign reveal" aria-hidden="true">― けんしょう</p>
+
+        <div class="story-cta reveal">
+          <a href="works.html" class="btn btn-pill">えことばの作品を見る<span class="chev">›</span></a>
+          <a href="index.html" class="btn btn-ghost">← ホームに戻る</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== フッター ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="hanko" aria-hidden="true"></span>
+        <p class="footer-name">えことば</p>
+      </div>
+      <p class="footer-place">あらかき けんしょう ／ 沖縄</p>
+      <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="index.html#gallery">えことば</a>
+        <a href="index.html#paintings">絵</a>
+        <a href="index.html#poems">詩</a>
+        <a href="index.html#story">想い</a>
+        <a href="index.html#books">本</a>
+        <a href="index.html#news">お知らせ</a>
+        <a href="index.html#contact">お問い合わせ</a>
+      </nav>
+      <div class="footer-sns">
+        <a href="https://www.instagram.com/kotobaichi/" target="_blank" rel="noopener">Instagram @kotobaichi</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> あらかき けんしょう</p>
+    </div>
+  </footer>
+
+  <!-- ===== ライトボックス ===== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="作品の拡大表示">
+    <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">×</button>
+    <figure class="lightbox-figure">
+      <img src="" alt="" id="lightboxImg" />
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
