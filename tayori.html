@@ -1,4 +1,4 @@
-<!-- Arakaki Kensho ekotoba site v2.x - works page -->
+<!-- Arakaki Kensho ekotoba site - tayori page (えことば便り) -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,17 +14,63 @@
     gtag('config', 'G-8PB6TK25SY');
   </script>
 
-  <title>作品一覧 ｜ えことば ― あらかき けんしょう</title>
-  <meta name="description" content="あらかき けんしょうの「えことば」作品一覧。短い手書きの言葉と色とりどりの花の絵を、ゆっくりご覧いただけます。" />
-  <meta property="og:title" content="作品一覧 ｜ えことば" />
-  <meta property="og:description" content="やさしい言葉と花の絵の作品一覧。" />
+  <title>えことば便り ｜ えことば ― あらかき けんしょう</title>
+  <meta name="description" content="あらかき けんしょうから、ときどき届くおたより。ホームページの出来事や、新しいえことば、日々の想いを綴ります。" />
+  <meta property="og:title" content="えことば便り ｜ えことば" />
+  <meta property="og:description" content="あらかき けんしょうから、ときどき届くおたより。" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/ekotoba-04.jpg" />
+  <meta property="og:image" content="images/tayori/tayori-01.jpg" />
   <meta name="theme-color" content="#F6EEDE" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- このページ専用のスタイル -->
+  <style>
+    .tayori-page { padding-top: 92px; }
+
+    .tayori-entry {
+      background: var(--paper-soft);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 30px 24px 34px;
+      margin-top: 34px;
+      text-align: center;
+    }
+    .tayori-date {
+      display: inline-block;
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 12.5px; color: var(--accent);
+      background: var(--paper-tint); border: 1px solid var(--line);
+      border-radius: 999px; padding: 3px 16px;
+      margin: 0 0 12px;
+    }
+    .tayori-title {
+      font-size: 21px;
+      margin-bottom: 6px;
+    }
+    .tayori-rule { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0 4px; }
+    .tayori-rule::before, .tayori-rule::after { content: ""; width: 40px; border-top: 2px dotted var(--accent-soft); }
+    .tayori-art { margin: 22px auto 0; max-width: 340px; }
+    .tayori-art .frame { cursor: zoom-in; }
+    .tayori-art figcaption {
+      font-family: var(--font-quote);
+      font-size: 16px; color: var(--ink-soft);
+      margin-top: 13px;
+    }
+    .tayori-body {
+      max-width: 27em;
+      margin: 24px auto 0;
+      font-size: 15.5px;
+      line-height: 2.1;
+    }
+    .tayori-body p { margin: 0 0 1.5em; }
+    .tayori-body p:last-child { margin-bottom: 0; }
+    @media (max-width: 360px) {
+      .tayori-body { font-size: 14px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -58,29 +104,47 @@
       <a href="index.html#story">想い</a>
       <a href="index.html#books">本</a>
       <a href="index.html#news">お知らせ</a>
-        <a href="tayori.html">たより</a>
+      <a href="tayori.html">たより</a>
       <a href="index.html#contact">お問い合わせ</a>
     </nav>
   </header>
 
   <main>
-    <!-- ===== 作品一覧 ===== -->
-    <section class="section works-page" id="gallery" data-decor="tl:02,tr:16,bl:05,br:15,l1:33,l2:25,l3:42,r1:27,r2:21,r3:37">
+    <section class="section tayori-page" id="tayori-list" data-decor="tl:07,tr:11,bl:06,br:09,l2:40,r2:31">
       <div class="works-top">
         <a href="index.html" class="works-back">← ホームに戻る</a>
       </div>
       <div class="eyebrow reveal">
-        <img class="section-banner" src="images/banners/banner-ekotoba.png" alt="えことば" loading="lazy" />
+        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>えことば便り</p>
       </div>
-      <h1 class="section-title reveal">えことば　作品一覧</h1>
-      <p class="section-lead reveal">短い言葉と花の絵。ゆっくりご覧ください。<br />気になる作品はタップで大きく表示できます。</p>
-      <p class="size-note reveal">作品サイズ：ハガキサイズ</p>
+      <h1 class="section-title reveal"><span class="nb">えことば便り</span></h1>
+      <p class="section-lead reveal">あらかき けんしょうから、<br />ときどき届くおたよりです。</p>
 
-      <div class="gallery-grid" id="galleryGrid"><!-- 全作品を script.js から生成 --></div>
+      <!-- ===== 便り 第1号 ===== -->
+      <article class="tayori-entry reveal" id="tayori-01">
+        <p class="tayori-date">2026年7月21日</p>
+        <h2 class="tayori-title"><span class="nb">ホームページを</span><span class="nb">開設しました</span></h2>
+        <div class="tayori-rule" aria-hidden="true"><span class="flower flower-sm"></span></div>
+
+        <figure class="tayori-art">
+          <div class="frame">
+            <img src="images/tayori/tayori-01.jpg" alt="えことば作品「今から、始まり。一分、一秒 変わっているよ。そんな感じで、いいんじゃない・・。」金色の丸と手書きの言葉" loading="eager" data-lightbox="images/tayori/tayori-01.jpg" data-caption="今から、始まり。" />
+          </div>
+          <figcaption>今から、始まり。</figcaption>
+        </figure>
+
+        <div class="tayori-body">
+          <p>初めまして。<br />えことばを書いている<br />あらかきけんしょうです。</p>
+          <p>ホームページを開設しました。</p>
+          <p>えことば便りの中で<br />様々な出会いを通して、<br />どのような新しい言葉が生まれるか<br />今からワクワクしています。</p>
+          <p>チャレンジ精神を忘れずに<br />楽しんでいきますので、<br />よろしくお願いします。</p>
+        </div>
+        <p class="story-sign" aria-hidden="true">― けんしょう</p>
+      </article>
 
       <div class="gallery-more reveal">
         <a href="index.html" class="btn btn-ghost">← ホームに戻る</a>
-        <p class="gallery-note">Instagramでは、毎日えことばを投稿しています。<br />
+        <p class="gallery-note">毎日のえことばは、Instagramで。<br />
           <a href="https://www.instagram.com/kotobaichi/" target="_blank" rel="noopener" class="inline-link">@kotobaichi でもっと見る →</a></p>
       </div>
     </section>
