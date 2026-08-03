@@ -566,6 +566,14 @@ main { display: block; }
 .news-center { text-align: center; }
 .news-rule { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0; }
 .news-rule::before, .news-rule::after { content: ""; width: 40px; border-top: 2px dotted var(--accent-soft); }
+.news-host { margin: 2px 0 0; font-size: 13.5px; color: var(--ink-soft); text-align: center; }
+.news-concept {
+  display: inline-block; margin: 10px 0 2px;
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 14px; color: var(--accent); letter-spacing: .06em;
+  background: var(--paper-tint); border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px 18px;
+}
 .news-detail { margin: 6px 0 0; }
 .news-detail > div { display: flex; align-items: baseline; gap: 12px; padding: 7px 0; justify-content: center; flex-wrap: wrap; }
 .news-tag {
