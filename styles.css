@@ -597,6 +597,8 @@ main { display: block; }
   .news-detail dd { font-size: 14px; }
 }
 .news-map { margin: 12px 0 0; font-size: 14px; text-align: center; }
+/* 「気軽に立ち寄っていいですよ」の一言をそっと目立たせる */
+.news-welcome { color: var(--accent); font-weight: 500; }
 .news-note { margin: 16px 0 0; font-size: 14px; color: var(--ink-soft); text-align: center; }
 .news-note a { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
 
