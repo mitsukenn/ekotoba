@@ -288,6 +288,12 @@ button { font-family: inherit; cursor: pointer; }
 }
 .frame--dark::after { inset: 18px; box-shadow: inset 0 2px 8px rgba(20, 12, 5, 0.55); }
 
+/* 実物の木製額縁ごと撮影した写真用。
+   CSSの額縁を描くと「額縁 in 額縁」になるので、写真そのものを額縁として見せる。 */
+.frame--photo { padding: 0; background: none; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-frame); }
+.frame--photo::before, .frame--photo::after { content: none; }
+.frame--photo img { border-radius: 0; }
+
 /* ===== セクション ===== */
 main { display: block; }
 .section {

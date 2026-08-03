@@ -3,6 +3,15 @@
   "use strict";
 
   /* ===== 4.2 作品データ ===== */
+  /* 写真そのものに実物の木製額縁が写り込んでいる作品。
+     サイトはCSSで額縁を描くので、この一覧のものは額縁を二重に描かない。
+     新しく額縁ありの写真を追加したときは、ここにファイル名を足すこと。 */
+  var FRAMED_FILES = {
+    "images/ekotoba-01.jpg": 1, "images/ekotoba-04.jpg": 1, "images/ekotoba-06.jpg": 1,
+    "images/ekotoba-07.jpg": 1, "images/ekotoba-08.jpg": 1, "images/ekotoba-09.jpg": 1,
+    "images/ekotoba-10.jpg": 1, "images/ekotoba-11.jpg": 1
+  };
+
   /* caption は作品に書かれているえことばの文章。未提供は "" にする。 */
   var works = [
     { file: "images/ekotoba-01.jpg", caption: "生きづらさの分だけ　言葉がある" },
@@ -59,7 +68,8 @@
       fig.className = "work-card reveal";
 
       var frame = document.createElement("div");
-      frame.className = "frame";
+      /* 実物の額縁ごと撮影した写真（framed:true）は、サイト側の額縁を描かない＝二重防止 */
+      frame.className = FRAMED_FILES[w.file] ? "frame frame--photo" : "frame";
 
       var img = document.createElement("img");
       img.src = w.file;
