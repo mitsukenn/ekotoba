@@ -602,6 +602,49 @@ main { display: block; }
 .news-note { margin: 16px 0 0; font-size: 14px; color: var(--ink-soft); text-align: center; }
 .news-note a { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
 
+/* ===== えことば便り：トップの最新3件リスト ===== */
+.tayori-latest { list-style: none; margin: 26px 0 0; padding: 0; }
+.tayori-latest li { margin-bottom: 12px; }
+.tayori-latest li:last-child { margin-bottom: 0; }
+.tayori-latest a {
+  display: grid; grid-template-columns: 76px 1fr; gap: 14px; align-items: center;
+  background: var(--paper-soft); border-radius: 16px; box-shadow: var(--shadow-card);
+  padding: 14px; color: inherit; text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.tayori-latest a:hover, .tayori-latest a:focus-visible {
+  transform: translateY(-2px); box-shadow: 0 14px 30px rgba(58, 50, 43, 0.14);
+}
+.tayori-latest-thumb {
+  width: 76px; height: 76px; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 4px 12px rgba(58, 50, 43, 0.14);
+}
+.tayori-latest-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tayori-latest-text { display: block; min-width: 0; }
+.tayori-latest-date {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 12.5px; color: var(--ink-soft);
+  line-height: 1.6;
+}
+.tayori-new {
+  font-size: 11px; color: #fff; background: var(--accent);
+  border-radius: 999px; padding: 1px 9px; letter-spacing: .08em; white-space: nowrap;
+}
+.tayori-latest-title {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: 17px; line-height: 1.5; margin-top: 2px;
+}
+.tayori-latest-excerpt {
+  display: block; font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; margin-top: 2px;
+}
+/* 360pxより狭い端末：サムネと文字を少し詰める */
+@media (max-width: 359px) {
+  .tayori-latest a { grid-template-columns: 64px 1fr; gap: 11px; padding: 12px; }
+  .tayori-latest-thumb { width: 64px; height: 64px; }
+  .tayori-latest-title { font-size: 16px; }
+  .tayori-latest-excerpt { font-size: 13px; }
+}
+
 /* ===== お問い合わせ（リース） ===== */
 .contact-wreath {
   position: relative;

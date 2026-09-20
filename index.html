@@ -47,7 +47,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500&family=Zen+Kurenaido&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260920" />
 </head>
 <body>
 
@@ -60,13 +60,13 @@
       </a>
       <nav class="site-nav" aria-label="メインナビ">
         <a href="#concept">コンセプト</a>
+        <a href="#tayori">たより</a>
         <a href="#gallery">えことば</a>
         <a href="#paintings">絵</a>
         <a href="#poems">詩</a>
         <a href="#story">想い</a>
         <a href="#books">本</a>
         <a href="#news">お知らせ</a>
-        <a href="#tayori">たより</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
@@ -75,13 +75,13 @@
     </div>
     <nav class="mobile-menu" id="mobileMenu" aria-label="モバイルメニュー" hidden>
       <a href="#concept">コンセプト</a>
+      <a href="#tayori">たより</a>
       <a href="#gallery">えことば</a>
       <a href="#paintings">絵</a>
       <a href="#poems">詩</a>
       <a href="#story">想い</a>
       <a href="#books">本</a>
       <a href="#news">お知らせ</a>
-        <a href="#tayori">たより</a>
       <a href="#contact">お問い合わせ</a>
     </nav>
   </header>
@@ -140,6 +140,54 @@
         <li><span class="concept-num">③</span><span>言葉を届ける</span></li>
       </ul>
       <p class="concept-note reveal">むずかしい言葉ではなく、<br />読んだ人が「ちょこっと元気になる」こと。<br />それが、一枚一枚に込めた願いです。</p>
+    </section>
+
+    <!-- ===== えことば便り（最新3件） ===== -->
+    <section class="section section-alt" id="tayori" data-decor="tl:05,tr:07,bl:16,br:03,l1:29,r1:41">
+      <div class="inner">
+        <div class="eyebrow reveal">
+          <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>えことば便り</p>
+        </div>
+        <h2 class="section-title reveal"><span class="nb">ときどき届く、</span><span class="nb">おたより</span></h2>
+        <p class="section-lead reveal">あらかき けんしょうから、<br />ときどき届くおたよりです。</p>
+
+        <ul class="tayori-latest reveal">
+          <li>
+            <a href="tayori.html#tayori-08">
+              <span class="tayori-latest-thumb"><img src="images/tayori/tayori-08.jpg" alt="" loading="lazy" /></span>
+              <span class="tayori-latest-text">
+                <span class="tayori-latest-date">2026年9月20日<span class="tayori-new">新着</span></span>
+                <span class="tayori-latest-title">全てに感謝を</span>
+                <span class="tayori-latest-excerpt">個展が無事に終わりました。</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="tayori.html#tayori-07">
+              <span class="tayori-latest-thumb"><img src="images/tayori/tayori-07.jpg" alt="" loading="lazy" /></span>
+              <span class="tayori-latest-text">
+                <span class="tayori-latest-date">2026年9月17日</span>
+                <span class="tayori-latest-title">命どぅ宝</span>
+                <span class="tayori-latest-excerpt">木彫りに込めた平和の願い。</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="tayori.html#tayori-06">
+              <span class="tayori-latest-thumb"><img src="images/tayori/tayori-06.jpg" alt="" loading="lazy" /></span>
+              <span class="tayori-latest-text">
+                <span class="tayori-latest-date">2026年9月7日</span>
+                <span class="tayori-latest-title">手作り絵本</span>
+                <span class="tayori-latest-excerpt">5年ぶり、5冊目の絵本。</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="gallery-more reveal" style="margin-top:22px;">
+          <a href="tayori.html" class="btn btn-pill">これまでの便りを読む<span class="chev">›</span></a>
+        </div>
+      </div>
     </section>
 
     <!-- ===== えことば ===== -->
@@ -380,24 +428,6 @@
       </div>
     </section>
 
-    <!-- ===== えことば便り ===== -->
-    <section class="section" id="tayori" data-decor="tl:05,tr:07,bl:16,br:03,l1:29,r1:41">
-      <div class="eyebrow reveal">
-        <p class="eyebrow-label"><span class="flower flower-red" aria-hidden="true"></span>えことば便り</p>
-      </div>
-      <h2 class="section-title reveal"><span class="nb">ときどき届く、</span><span class="nb">おたより</span></h2>
-
-      <article class="news-card news-center reveal" style="margin-top:24px;">
-        <span class="news-badge">最新のたより</span>
-        <h3 class="news-title"><span class="nb">全てに感謝を</span></h3>
-        <div class="news-rule"><span class="flower flower-sm" aria-hidden="true"></span></div>
-        <p class="news-note">2026年9月20日<br />初めての個展が、<br />無事に終わりました。<br />感謝の気持ちを<br />綴りました。</p>
-      </article>
-      <div class="gallery-more reveal" style="margin-top:26px;">
-        <a href="tayori.html" class="btn btn-pill">えことば便りを読む<span class="chev">›</span></a>
-      </div>
-    </section>
-
     <!-- ===== お問い合わせ ===== -->
     <section class="section" id="contact" data-decor="tl:16,tr:15,bl:09,br:01,l1:38,l2:29,r1:48,r2:45">
       <div class="eyebrow reveal">
@@ -442,13 +472,13 @@
       </div>
       <p class="footer-place">あらかき けんしょう ／ 沖縄</p>
       <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="#tayori">たより</a>
         <a href="#gallery">えことば</a>
         <a href="#paintings">絵</a>
         <a href="#poems">詩</a>
         <a href="#story">想い</a>
         <a href="#books">本</a>
         <a href="#news">お知らせ</a>
-        <a href="#tayori">たより</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
       <div class="footer-sns">
