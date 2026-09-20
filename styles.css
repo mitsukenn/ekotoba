@@ -607,7 +607,7 @@ main { display: block; }
 .tayori-latest li { margin-bottom: 12px; }
 .tayori-latest li:last-child { margin-bottom: 0; }
 .tayori-latest a {
-  display: grid; grid-template-columns: 76px 1fr; gap: 14px; align-items: center;
+  display: grid; grid-template-columns: 84px 1fr; gap: 14px; align-items: center;
   background: var(--paper-soft); border-radius: 16px; box-shadow: var(--shadow-card);
   padding: 14px; color: inherit; text-decoration: none;
   transition: transform .18s ease, box-shadow .18s ease;
@@ -615,11 +615,17 @@ main { display: block; }
 .tayori-latest a:hover, .tayori-latest a:focus-visible {
   transform: translateY(-2px); box-shadow: 0 14px 30px rgba(58, 50, 43, 0.14);
 }
+/* 作品は言葉と絵がセットなので、切り抜かず全体を見せる（contain） */
 .tayori-latest-thumb {
-  width: 76px; height: 76px; border-radius: 10px; overflow: hidden;
-  box-shadow: 0 4px 12px rgba(58, 50, 43, 0.14);
+  width: 84px; height: 66px; border-radius: 10px; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  padding: 3px;
 }
-.tayori-latest-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tayori-latest-thumb img {
+  width: 100%; height: 100%; object-fit: contain; display: block;
+  border-radius: 6px;
+}
 .tayori-latest-text { display: block; min-width: 0; }
 .tayori-latest-date {
   display: flex; align-items: center; gap: 8px;
@@ -639,8 +645,8 @@ main { display: block; }
 }
 /* 360pxより狭い端末：サムネと文字を少し詰める */
 @media (max-width: 359px) {
-  .tayori-latest a { grid-template-columns: 64px 1fr; gap: 11px; padding: 12px; }
-  .tayori-latest-thumb { width: 64px; height: 64px; }
+  .tayori-latest a { grid-template-columns: 72px 1fr; gap: 11px; padding: 12px; }
+  .tayori-latest-thumb { width: 72px; height: 58px; }
   .tayori-latest-title { font-size: 16px; }
   .tayori-latest-excerpt { font-size: 13px; }
 }
