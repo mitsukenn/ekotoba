@@ -12,8 +12,15 @@
     "images/ekotoba-10.jpg": 1, "images/ekotoba-11.jpg": 1
   };
 
-  /* caption は作品に書かれているえことばの文章。未提供は "" にする。 */
+  /* caption は作品に書かれているえことばの文章。未提供は "" にする。
+     voice は、えことばetc展の感想カードでその作品名が書かれていた声。
+     作品名が書かれていた声だけを付けること（書かれていない声を推測で結びつけない）。 */
   var works = [
+    /* えことばetc展で感想カードに作品名が書かれた2点を先頭に（トップの6点に入る） */
+    { file: "images/ekotoba-42.jpg", caption: "不安定さの中で　ふわふわ生きる",
+      voice: "不安定さのなかで<br>ふわふわ生きる。<br>とても素敵な個展ですね。<br>この言葉がとても好きです。" },
+    { file: "images/ekotoba-14.jpg", caption: "継続は宝なり",
+      voice: "思いの込もった作品が<br>たくさん展示されていて、<br>とても心に響きました。<br>私が一番すきなのは<br>「継続は宝なり」です！<br>これからも頑張ってください。<br>また来ます。" },
     { file: "images/ekotoba-01.jpg", caption: "生きづらさの分だけ　言葉がある" },
     { file: "images/ekotoba-02.jpg", caption: "疲れたら　休もうね" },
     { file: "images/ekotoba-03.jpg", caption: "表現は自由　表現は生き方" },
@@ -27,7 +34,6 @@
     { file: "images/ekotoba-11.jpg", caption: "できない理由をあげるより　やりたい理由を一つ作ろう" },
     { file: "images/ekotoba-12.jpg", caption: "ぼくは思う　生きてるだけですごいって" },
     { file: "images/ekotoba-13.jpg", caption: "やるときゃ　やるっしょ" },
-    { file: "images/ekotoba-14.jpg", caption: "継続は宝なり" },
     { file: "images/ekotoba-15.jpg", caption: "いっぱい記念日作ったら　毎日がハッピーだ！" },
     { file: "images/ekotoba-16.jpg", caption: "理由は何でもいい　自分を褒めることから始めよう" },
     { file: "images/ekotoba-17.jpg", caption: "生きてる間は勉強中" },
@@ -87,6 +93,21 @@
         cap.textContent = w.caption;
         fig.appendChild(cap);
       }
+
+      /* 感想カードでこの作品が名指しされていた場合、押して開ける声を添える */
+      if (w.voice) {
+        var det = document.createElement("details");
+        det.className = "koe-detail";
+        det.innerHTML =
+          '<summary><span class="flower flower-sm" aria-hidden="true"></span>' +
+          'この作品に届いた声<span class="chev">›</span></summary>' +
+          '<div class="koe-panel"><div class="koe-card">' +
+          '<p class="koe-text">' + w.voice + '</p>' +
+          '<span class="koe-from">― えことばetc展 感想カードより</span>' +
+          '</div></div>';
+        fig.appendChild(det);
+      }
+
       grid.appendChild(fig);
     });
   }

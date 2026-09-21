@@ -831,3 +831,149 @@ main { display: block; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* =====================================================
+   来場者の声（感想カード）  ― styles.css へ追記する想定
+   ===================================================== */
+
+/* ===== 共通：感想カード ===== */
+.koe-card {
+  position: relative;
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px 22px 18px;
+  box-shadow: var(--shadow-card);
+}
+/* 上辺のマスキングテープ（貼った感じ） */
+.koe-card::before {
+  content: "";
+  position: absolute; top: -8px; left: 50%;
+  width: 62px; height: 17px;
+  transform: translateX(-50%) rotate(-1.5deg);
+  background: rgba(240, 169, 63, .28);
+  border-left: 1px dashed rgba(240, 169, 63, .55);
+  border-right: 1px dashed rgba(240, 169, 63, .55);
+  border-radius: 2px;
+}
+.koe-text {
+  margin: 0;
+  font-family: var(--font-quote);
+  font-size: 15.5px;
+  line-height: 1.95;
+}
+.koe-from {
+  display: block;
+  margin-top: 12px;
+  text-align: right;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+}
+
+/* ===== 声の一覧（カードを少しずつ傾けて貼る） ===== */
+.koe-list { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-direction: column; gap: 26px; }
+.koe-list > li { margin: 0; }
+.koe-list > li:nth-child(odd)  .koe-card { transform: rotate(-.55deg); }
+.koe-list > li:nth-child(even) .koe-card { transform: rotate(.65deg); }
+
+/* ===== 枚数バッジ ===== */
+.koe-count {
+  display: flex; width: fit-content;
+  align-items: baseline; gap: 6px;
+  margin: 18px auto 0;
+  padding: 10px 22px;
+  background: var(--paper-soft);
+  border: 1.5px dashed var(--accent-soft);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+.koe-count strong { font-size: 26px; color: var(--accent); font-weight: 700; }
+
+/* ===== テーマの小見出し（特設ページ用） ===== */
+.koe-theme {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 46px 0 0;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 16px; color: var(--accent);
+}
+.koe-theme::before, .koe-theme::after {
+  content: ""; width: 34px; border-top: 2px dotted var(--accent-soft);
+}
+
+/* ===== 作品にひもづく声（開いて読む） ===== */
+.koe-detail { margin: 16px auto 0; max-width: 30em; text-align: center; }
+.koe-detail > summary {
+  display: inline-flex; align-items: center; gap: 8px;
+  list-style: none; cursor: pointer;
+  padding: 9px 20px;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  color: var(--accent);
+  background: var(--paper-soft);
+  border: 1.5px dashed var(--accent-soft);
+  border-radius: 999px;
+  transition: background .2s, transform .2s;
+}
+.koe-detail > summary::-webkit-details-marker { display: none; }
+.koe-detail > summary::marker { content: ""; }
+.koe-detail > summary:hover { background: #fff; transform: translateY(-1px); }
+.koe-detail > summary .chev { font-weight: 400; transition: transform .2s; }
+.koe-detail[open] > summary .chev { transform: rotate(90deg); }
+.koe-detail[open] > summary { background: #fff; }
+.koe-panel { margin-top: 16px; text-align: left; }
+.koe-panel .koe-card { transform: rotate(-.5deg); }
+
+/* ===== 声の帯（セクションの合間にそっと置く） ===== */
+.koe-band {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 34px 22px;
+  text-align: center;
+  position: relative;
+}
+.koe-band::before, .koe-band::after {
+  content: ""; display: block; width: 58px; margin: 0 auto;
+  border-top: 2px dotted var(--accent-soft);
+}
+.koe-band::before { margin-bottom: 20px; }
+.koe-band::after  { margin-top: 20px; }
+.koe-band p {
+  margin: 0;
+  font-family: var(--font-quote);
+  font-size: 16.5px;
+  line-height: 2;
+}
+.koe-band-from {
+  display: block; margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 12.5px; color: var(--ink-soft);
+}
+
+/* ===== 横スクロール版（パターンAの別案で使用可） ===== */
+.koe-scroller {
+  display: flex; gap: 16px; overflow-x: auto;
+  margin: 28px -22px 0; padding: 12px 22px 18px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.koe-scroller::-webkit-scrollbar { height: 6px; }
+.koe-scroller::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+.koe-scroller > li { flex: 0 0 78%; scroll-snap-align: center; list-style: none; }
+
+/* ===== タブレット以上 ===== */
+@media (min-width: 768px) {
+  .koe-list { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 22px; }
+  .koe-scroller > li { flex-basis: 46%; }
+}
+
+/* 絵・詩は768px以上で2カラムになるため、声のボタンは全幅に置く */
+@media (min-width: 768px) {
+  .painting > .koe-detail, .poem > .koe-detail { grid-column: 1 / -1; margin-top: 6px; }
+}
+
+/* ナビ項目が1つ増えたぶん、狭いPC幅では間隔を詰めてロゴとの衝突を防ぐ */
+@media (min-width: 768px) and (max-width: 900px) {
+  .site-nav { gap: 16px; }
+}
